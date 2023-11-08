@@ -8,27 +8,27 @@
     body {
         font-family: Arial, sans-serif;
         text-align: center;
-        margin-top: 50px;
+        margin-top: 5vw;
         background-color: #f8f4ec; /* Light cream background */
     }
 
     #pomodoro-timer {
         margin: 0 auto;
         display: inline-block;
-        padding: 10px;
+        padding: 1vw;
     }
 
     #time {
-        font-size: 60px; /* Increased from 40px by 1.5 times */
+        font-size: 5vw; /* Responsive font size based on viewport width */
         color: #333;
         display: block; /* To ensure it has full width for alignment */
-        margin: 20px 0; /* Provide some space above and below the timer */
+        margin: 2vw 0; /* Provide some space above and below the timer */
     }
 
     button {
-        font-size: 15px; /* Increased from 10px by 1.5 times */
-        padding: 7.5px 15px; /* Increased padding by 1.5 times */
-        margin: 3px; /* Adjusted for aesthetic balance */
+        font-size: 1.5vw; /* Responsive font size based on viewport width */
+        padding: 1vw 2vw; /* Responsive padding based on viewport width */
+        margin: 1vw; /* Adjusted for aesthetic balance */
         color: white;
         background-color: #333; /* Dark gray background for buttons */
         border: none;
@@ -36,17 +36,21 @@
         cursor: pointer;
         transition: background-color 0.3s ease;
         display: inline-block; /* This will help with alignment */
-        width: 22%; /* Adjust this percentage to get the edge of buttons aligned */
+        width: auto; /* Auto width to fit content */
+        white-space: nowrap; /* Prevents wrapping of button text */
     }
 
     button:hover {
         background-color: #1a1a1a; /* Slightly darker gray on hover for buttons */
     }
 
-    /* Adjust this if the buttons are not properly aligned */
-    @media (min-width: 600px) {
-        #pomodoro-timer {
-            width: 50%; /* This will help to ensure the buttons are just slightly longer than the timer */
+    /* Ensure buttons do not wrap on small screens */
+    @media (max-width: 400px) {
+        #time, button {
+            font-size: 3.5vw;
+        }
+        button {
+            padding: 0.8vw 1.6vw; /* Smaller padding for very small screens */
         }
     }
 </style>
