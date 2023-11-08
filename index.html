@@ -4,14 +4,50 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pomodoro Timer</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    #pomodoro-timer {
+        margin: 0 auto;
+    }
+
+    #time {
+        font-size: 80px;
+        color: #333;
+    }
+
+    button {
+        font-size: 20px;
+        padding: 10px 20px;
+        margin: 5px;
+        color: white;
+        background-color: #333; /* Dark gray background */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #1a1a1a; /* Slightly darker gray on hover */
+    }
+
+    button:focus {
+        outline: none;
+    }
+</style>
 </head>
 <body>
 <div id="pomodoro-timer">
-    <span id="time">25:00</span>
-    <button onclick="startTimer()">Play</button>
+    <div id="time">25:00</div>
+    <button onclick="startTimer()">Start</button>
     <button onclick="pauseTimer()">Pause</button>
-    <button onclick="resetTimer()">Reset</button>
     <button onclick="startBreak()">Break</button>
+    <button onclick="resetTimer()">Reset</button>
 </div>
 
 <audio id="bell" preload="auto">
