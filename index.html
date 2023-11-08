@@ -14,31 +14,40 @@
 
     #pomodoro-timer {
         margin: 0 auto;
+        display: inline-block;
+        padding: 10px;
     }
 
     #time {
-        font-size: 40px; /* Half the previous size */
+        font-size: 60px; /* Increased from 40px by 1.5 times */
         color: #333;
+        display: block; /* To ensure it has full width for alignment */
+        margin: 20px 0; /* Provide some space above and below the timer */
     }
 
     button {
-        font-size: 10px; /* Half the previous size */
-        padding: 5px 10px; /* Half the previous padding */
-        margin: 2px; /* Adjusted for aesthetic balance */
+        font-size: 15px; /* Increased from 10px by 1.5 times */
+        padding: 7.5px 15px; /* Increased padding by 1.5 times */
+        margin: 3px; /* Adjusted for aesthetic balance */
         color: white;
-        background-color: #333; /* Dark gray background */
+        background-color: #333; /* Dark gray background for buttons */
         border: none;
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s ease;
+        display: inline-block; /* This will help with alignment */
+        width: 22%; /* Adjust this percentage to get the edge of buttons aligned */
     }
 
     button:hover {
-        background-color: #1a1a1a; /* Slightly darker gray on hover */
+        background-color: #1a1a1a; /* Slightly darker gray on hover for buttons */
     }
 
-    button:focus {
-        outline: none;
+    /* Adjust this if the buttons are not properly aligned */
+    @media (min-width: 600px) {
+        #pomodoro-timer {
+            width: 50%; /* This will help to ensure the buttons are just slightly longer than the timer */
+        }
     }
 </style>
 </head>
