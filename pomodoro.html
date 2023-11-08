@@ -49,7 +49,71 @@
 </audio>
 
 <script>
-// Your JavaScript will go here
+let isRunning = false;
+let timerInterval = null;
+let breakTime = 5 * 60; // Break time set to 5 minutes
+let sessionTime = 25 * 60; // Session time set to 25 minutes
+let currentTime = sessionTime; // Current time starts at the session time
+
+// Updates the timer display
+function updateDisplay(time) {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    document.getElementById('time').textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+}
+
+// Starts or resumes the timer
+function startTimer() {
+    if (!isRunning) {
+        isRunning = true;
+        timerInterval = setInterval(() => {
+            currentTime -= 1;
+            updateDisplay(currentTime);
+            
+            if (currentTime <= 0) {
+                clearInterval(timerInterval);
+                playBell();
+                // Automatically starts the break time or you can set it to just stop here
+                // startBreak(); // Uncomment to start the break automatically
+            }
+        }, 1000);
+    }
+}
+
+// Pauses the timer
+function pauseTimer() {
+    if (isRunning) {
+        isRunning = false;
+        clearInterval(timerInterval);
+    }
+}
+
+// Resets the timer to the default session time
+function resetTimer() {
+    isRunning = false;
+    clearInterval(timerInterval);
+    currentTime = sessionTime;
+    updateDisplay(currentTime);
+}
+
+// Starts the break time
+function startBreak() {
+    isRunning = false;
+    clearInterval(timerInterval);
+    currentTime = breakTime;
+    updateDisplay(currentTime);
+    startTimer();
+}
+
+// Plays a bell sound when the timer ends
+function playBell() {
+    const bell = document.getElementById('bell');
+    bell.play();
+}
+
+// Initialize the display
+updateDisplay(sessionTime);
+
 </script>
 </body>
 </html>
