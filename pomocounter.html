@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pomodoro Counter</title>
+<style>
+  body {
+    background-color: #F1F1EF;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  #app {
+    background: #333;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  #counter {
+    font-size: 48px; /* twice the size */
+    text-align: center;
+    margin: 20px 0;
+  }
+  button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 32px; /* twice the size */
+    margin: 0 10px;
+  }
+  #reset {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px; /* twice the size */
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <h1>Pomodoros</h1>
+  <div id="counter">0</div>
+  <button onclick="decrement()">↓</button>
+  <button onclick="increment()">↑</button>
+  <button id="reset" onclick="reset()">reset</button>
+</div>
+<script>
+  var count = 0;
+
+  function increment() {
+    count++;
+    document.getElementById('counter').innerText = count;
+  }
+
+  function decrement() {
+    if(count > 0) {
+      count--;
+      document.getElementById('counter').innerText = count;
+    }
+  }
+
+  function reset() {
+    count = 0;
+    document.getElementById('counter').innerText = count;
+  }
+</script>
+</body>
+</html>
