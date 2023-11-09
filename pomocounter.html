@@ -15,6 +15,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    position: relative; /* Set position to relative for confetti positioning */
   }
   #counter-container {
     display: flex;
@@ -36,6 +37,15 @@
     margin: 0 10px;
     outline: none;
   }
+  /* Confetti styles */
+  .confetti {
+    position: absolute;
+    z-index: 10;
+    background-color: #ffcc00;
+    width: 10px;
+    height: 10px;
+    opacity: 0.7;
+  }
 </style>
 </head>
 <body>
@@ -50,12 +60,45 @@
   function increment() {
     count++;
     document.getElementById('counter').innerText = count;
+    createConfetti();
   }
 
   function decrement() {
     if(count > 0) {
       count--;
       document.getElementById('counter').innerText = count;
+    }
+  }
+
+  // Confetti animation function
+  function createConfetti() {
+    var confettiCount = 10;
+    var confettiContainer = document.body;
+    
+    for (var i = 0; i < confettiCount; i++) {
+      var confetti = document.createElement('div');
+      confetti.classList.add('confetti');
+      confettiContainer.appendChild(confetti);
+
+      // Randomize confetti position around cursor
+      confetti.style.left = (window.innerWidth / 2) + (Math.random() - 0.5) * 100 + 'px';
+      confetti.style.top = (window.innerHeight / 2) + (Math.random() - 0.5) * 100 + 'px';
+
+      // Animate confetti
+      var animationEnd = {x: Math.random() * window.innerWidth, y: window.innerHeight + 20};
+      var animation = confetti.animate([
+        { transform: 'translate(0, 0)', opacity: 1 },
+        { transform: 'translate(' + (animationEnd.x - window.innerWidth / 2) + 'px, ' + animationEnd.y + 'px)', opacity: 0 }
+      ], {
+        // Random duration for each confetti to make it more natural
+        duration: Math.random() * 1000 + 1000,
+        easing: 'ease-out'
+      });
+
+      // Clean up confetti element after animation
+      animation.onfinish = function() {
+        confetti.remove();
+      };
     }
   }
 </script>
