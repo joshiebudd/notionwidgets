@@ -23,9 +23,15 @@
     text-align: center;
     display: inline-block;
   }
+  #counter-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+  }
   #counter {
     font-size: 48px;
-    margin: 20px 0;
+    margin: 0 10px;
   }
   .button-group button {
     background: none;
@@ -33,19 +39,18 @@
     color: white;
     cursor: pointer;
     font-size: 32px;
-    font-weight: bold; /* Make arrows bold */
-    margin: 0 5px; /* Adjust spacing to make arrows closer to '0' */
+    font-weight: bold;
+    margin: 0 10px;
     outline: none;
   }
-  /* Removed styles for reset button */
 </style>
 </head>
 <body>
 <div id="app">
   <h1>Pomodoros</h1>
-  <div id="counter">0</div>
-  <div class="button-group">
+  <div id="counter-container">
     <button onclick="decrement()">↓</button>
+    <div id="counter">0</div>
     <button onclick="increment()">↑</button>
   </div>
 </div>
@@ -63,8 +68,6 @@
       document.getElementById('counter').innerText = count;
     }
   }
-
-  // Removed the reset function
 </script>
 </body>
 </html>
