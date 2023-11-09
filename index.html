@@ -25,16 +25,10 @@
         margin: 2vw 0; /* Provide some space above and below the timer */
     }
 
-    .button-group {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 1vw; /* Spacing between the rows of buttons */
-    }
-
     button {
         font-size: 1.5vw; /* Responsive font size based on viewport width */
         padding: 1vw 2vw; /* Responsive padding based on viewport width */
-        margin: 0 1vw; /* Spacing between buttons */
+        margin: 1vw; /* Adjusted for aesthetic balance */
         color: white;
         background-color: #333; /* Dark gray background for buttons */
         border: none;
@@ -59,23 +53,16 @@
         font-size: 3.5vw;
         padding: 0.8vw 1.6vw;
     }
-    .button-group {
-        flex-direction: column;
-    }
 }
 </style>
 </head>
 <body>
 <div id="pomodoro-timer">
     <div id="time">25:00</div>
-    <div class="button-group">
-        <button onclick="startTimer()">Start</button>
-        <button onclick="startBreak()">Break</button>
-    </div>
-    <div class="button-group">
-        <button onclick="pauseTimer()">Pause</button>
-        <button onclick="resetTimer()">Reset</button>
-    </div>
+    <button onclick="startTimer()">Start</button>
+    <button onclick="pauseTimer()">Pause</button>
+    <button onclick="startBreak()">Break</button>
+    <button onclick="resetTimer()">Reset</button>
 </div>
 
 <audio id="bell" preload="auto">
