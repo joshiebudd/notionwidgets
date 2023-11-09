@@ -16,9 +16,6 @@
     align-items: center;
     height: 100vh;
   }
-  h1 {
-    color: #333;
-  }
   #counter-container {
     display: flex;
     align-items: center;
@@ -35,14 +32,13 @@
     color: #333;
     cursor: pointer;
     font-size: 32px;
-    font-weight: bold;
+    font-weight: 900; /* Make the arrows bolder */
     margin: 0 10px;
     outline: none;
   }
 </style>
 </head>
 <body>
-  <h1>Pomodoros</h1>
   <div id="counter-container">
     <button onclick="decrement()">↓</button>
     <div id="counter">0</div>
