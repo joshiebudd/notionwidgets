@@ -19,7 +19,7 @@
     }
 
     #time {
-        font-size: 5vw; /* Responsive font size based on viewport width */
+        font-size: 10vw; /* Responsive font size based on viewport width */
         color: #333;
         display: block; /* To ensure it has full width for alignment */
         margin: 2vw 0; /* Provide some space above and below the timer */
@@ -45,14 +45,15 @@
     }
 
     /* Ensure buttons do not wrap on small screens */
-    @media (max-width: 400px) {
-        #time, button {
-            font-size: 3.5vw;
-        }
-        button {
-            padding: 0.8vw 1.6vw; /* Smaller padding for very small screens */
-        }
+@media (max-width: 400px) {
+    #time {
+        font-size: 8vw; /* Adjust the timer font size for smaller screens */
     }
+    button {
+        font-size: 3.5vw;
+        padding: 0.8vw 1.6vw;
+    }
+}
 </style>
 </head>
 <body>
