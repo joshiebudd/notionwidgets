@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NeuroNotes Website</title>
@@ -22,36 +22,33 @@
     height: auto; /* This will maintain the aspect ratio of the image */
   }
 
-  /* More styles... */
 
+h3 {
+        color: black; /* This will set the text color of all h3 elements to black */
+      }
 
     </style>
   </head>
   <body>
-    <style>
-      header nav {
-        margin-bottom: 85px; /* This is the margin between header and hero - You can adjust the value as needed */
-      }
-    </style>
 
-    <header>
-      <nav class="bg-white px-4 py-2.5 lg:px-6">
-        <div class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between">
-          <a href="https://www.neuronotes.example.com" class="flex items-center">
-            <img src="https://raw.githubusercontent.com/joshiebudd/notionwidgets/main/NeuroNotesLogo.png" class="mr-3 h-6 sm:h-9" alt="NeuroNotes Logo" />
-            <span class="self-center whitespace-nowrap text-xl font-semibold text-gray-800">NeuroNotes</span>
-          </a>
-          <div class="flex items-center space-x-4 lg:order-2">
-            <!-- Add padding to header buttons -->
-            <a href="/pricing" class="px-2 py-1 text-sm font-medium text-gray-800 hover:text-gray-600 hover:dark:text-gray-300">Pricing</a>
-            <a href="/reviews" class="px-2 py-1 text-sm font-medium text-gray-800 hover:text-gray-600 hover:dark:text-gray-300">Reviews</a>
-            <a href="/faqs" class="px-2 py-1 text-sm font-medium text-gray-800 hover:text-gray-600 hover:dark:text-gray-300">FAQs</a>
-            <a href="/buy-now" class="rounded-lg bg-gray-800 px-4 py-2 text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300">Buy Now</a>
-          </div>
-        </div>
-      </nav>
-    </header>
-      <section class="bg-white hero-section">
+<header class="fixed top-0 w-full z-50 bg-white/30 backdrop-blur-lg">
+  <nav class="px-8 py-5 lg:px-6">
+    <div class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between">
+      <a href="https://www.neuronotes.example.com" class="flex items-center">
+        <img src="https://raw.githubusercontent.com/joshiebudd/notionwidgets/main/NeuroNotesLogo.png" class="mr-3 h-6 sm:h-9" alt="NeuroNotes Logo" />
+        <span class="self-center whitespace-nowrap text-2xl font-semibold text-gray-800">NeuroNotes</span>
+      </a>
+      <div class="flex items-center space-x-4 lg:order-2">
+        <a href="/pricing" class="px-2 py-1 text-lg font-thin text-gray-800 hover:text-gray-600 hover:dark:text-gray-300">Pricing</a>
+        <a href="/reviews" class="px-2 py-1 text-lg font-thin text-gray-800 hover:text-gray-600 hover:dark:text-gray-300">Reviews</a>
+        <a href="/faqs" class="px-2 py-1 text-lg font-thin text-gray-800 hover:text-gray-600 hover:dark:text-gray-300">FAQs</a>
+        <a href="/buy-now" class="rounded-lg bg-black px-6 py-2.5 text-lg font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300">Get Now</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+      <section class="bg-[#FAFAFA] hero-section pt-20">
       <div class="mx-auto max-w-screen-xl px-4 py-8 text-center lg:px-12 lg:py-16">
         <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-black md:text-5xl lg:text-6xl">Supercharge your ADHD Brain with NeuroNotes</h1>
 
@@ -59,12 +56,12 @@
 
         <!-- Get NeuroNotes Button (Below "Must-have focus tools" text and above stars) -->
         <div class="mt-4"> <!-- Increased margin-top for spacing -->
-          <a href="#" class="inline-block rounded-lg bg-gray-800 mt-2 px-4 py-4 text-base font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300">Get NeuroNotes</a>
+          <a href="#" class="inline-block rounded-lg bg-black mt-2 px-4 py-4 text-base font-bold text-white hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300">Get NeuroNotes</a>
         </div>
 
         <!-- Star Rating -->
         <div class="mb-2 flex justify-center">
-          <span class="mt-3 mb-0 text-lg leading-none text-orange-400">★★★★★</span> 
+          <span class="mt-3 mb-0 text-3xl leading-none text-orange-400">★★★★★</span> 
         </div>
         <span class="mt-0 text-sm text-gray-500">4.9/5 from 500+ ADHDers.</span>
       </div>
@@ -75,5 +72,38 @@
       <div class="mx-auto max-w-screen-xl px-4 py-8 text-center lg:px-12 lg:py-16">
       </div>
     </section>
+
+
+
+<section class="bg-white benefits-section">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+    <div class="max-w-screen-md mb-8 lg:mb-16 mx-auto text-center"> <!-- mx-auto and text-center classes added -->
+      <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">Silence the chaos. <br> Channel the flow state </h2> 
+      <p class="text-gray-500 sm:text-xl text-gray-900">The all-in-one notion system your brain has been crying for. <br> Everything in one place, with no distractions.</p>
+    </div>
+    <div class="space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0">
+      <div>
+        <img src="https://framerusercontent.com/images/5LekmofvUs1St83ldPvtaP9RsI.png" alt="Marketing" class="mx-auto mb-2 w-60 h-60 lg:w-60 lg:h-60">
+        <h3 class="mb-2 text-xl font-bold text-black text-center">Marketing</h3>
+      </div>
+      <div>
+        <img src="https://framerusercontent.com/images/5LekmofvUs1St83ldPvtaP9RsI.png" alt="Legal" class="mx-auto mb-2 w-60 h-60 lg:w-60 lg:h-60">
+        <h3 class="mb-2 text-xl font-bold text-black text-center">Legal</h3>
+      </div>
+
+      <div>
+        <img src="https://framerusercontent.com/images/5LekmofvUs1St83ldPvtaP9RsI.png" alt="Finance" class="mx-auto mb-2 w-60 h-60 lg:w-60 lg:h-60">
+        <h3 class="mb-2 text-xl font-bold text-black text-center">Finance</h3>
+      </div>
+      <div>
+        <img src="https://framerusercontent.com/images/5LekmofvUs1St83ldPvtaP9RsI.png" alt="Operations" class="mx-auto mb-2 w-60 h-60 lg:w-60 lg:h-60">
+        <h3 class="mb-2 text-xl font-bold text-black text-center">Operations</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    
   </body>
 </html>
