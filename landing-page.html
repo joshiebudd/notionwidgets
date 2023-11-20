@@ -21,7 +21,15 @@
     max-width: 100%; /* This will make sure the image is not larger than its container */
     height: auto; /* This will maintain the aspect ratio of the image */
   }
+    .tile-container {
+      max-width: 300px; /* Adjust the max-width as needed */
+      margin: 0 auto; /* Center the tiles horizontally */
+    }
 
+.bordered-image {
+  border: 4px solid #e5e7eb; /* You can adjust the border color and width as needed */
+  border-radius: 4px; /* You can adjust the border radius as needed */
+}
 
 h3 {
         color: black; /* This will set the text color of all h3 elements to black */
@@ -36,12 +44,12 @@ h3 {
     <div class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between">
       <a href="https://www.neuronotes.example.com" class="flex items-center">
         <img src="https://raw.githubusercontent.com/joshiebudd/notionwidgets/main/NeuroNotesLogo.png" class="mr-3 h-6 sm:h-9" alt="NeuroNotes Logo" />
-        <span class="self-center whitespace-nowrap text-2xl font-semibold text-gray-800">NeuroNotes</span>
+        <span class="self-center whitespace-nowrap text-2xl font-semibold text-black">NeuroNotes</span>
       </a>
       <div class="flex items-center space-x-4 lg:order-2">
-        <a href="/pricing" class="px-2 py-1 text-lg font-thin text-gray-800 hover:text-gray-600 hover:dark:text-gray-300">Pricing</a>
-        <a href="/reviews" class="px-2 py-1 text-lg font-thin text-gray-800 hover:text-gray-600 hover:dark:text-gray-300">Reviews</a>
-        <a href="/faqs" class="px-2 py-1 text-lg font-thin text-gray-800 hover:text-gray-600 hover:dark:text-gray-300">FAQs</a>
+        <a href="/pricing" class="px-2 py-1 text-lg font-thin text-black hover:text-gray-600 hover:dark:text-gray-300">Pricing</a>
+        <a href="/reviews" class="px-2 py-1 text-lg font-thin text-black hover:text-gray-600 hover:dark:text-gray-300">Reviews</a>
+        <a href="/faqs" class="px-2 py-1 text-lg font-thin text-black hover:text-gray-600 hover:dark:text-gray-300">FAQs</a>
         <a href="/buy-now" class="rounded-lg bg-black px-6 py-2.5 text-lg font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300">Get Now</a>
       </div>
     </div>
@@ -52,7 +60,7 @@ h3 {
       <div class="mx-auto max-w-screen-xl px-4 py-8 text-center lg:px-12 lg:py-16">
         <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-black md:text-5xl lg:text-6xl">Supercharge your ADHD Brain with NeuroNotes</h1>
 
-        <p class="mb-4 text-lg font-normal text-black sm:px-16 lg:text-xl xl:px-48">NeuroNotes serves as a second brain for your studies by centralizing notes, projects, flashcards, and must-have focus tools.</p>
+        <p class="mb-6 text-lg font-normal text-black sm:px-16 lg:text-xl xl:px-48">NeuroNotes serves as a second brain for your studies by centralizing notes, projects, flashcards, and must-have focus tools.</p>
 
         <!-- Get NeuroNotes Button (Below "Must-have focus tools" text and above stars) -->
         <div class="mt-4"> <!-- Increased margin-top for spacing -->
@@ -63,47 +71,215 @@ h3 {
         <div class="mb-2 flex justify-center">
           <span class="mt-3 mb-0 text-3xl leading-none text-orange-400">★★★★★</span> 
         </div>
-        <span class="mt-0 text-sm text-gray-500">4.9/5 from 500+ ADHDers.</span>
+        <span class="mt-0 mb-0 text-sm text-gray-800">4.89/5 from 500+ ADHDers.</span>
       </div>
 
-    <img src="https://preview.redd.it/7vdhu1wn1yd81.png?width=1293&format=png&auto=webp&s=1bb9257c2744e54ed28b230bd621cfa33d2bde18" width="400" height="300" alt="template" class="centered-image />
+<img src="https://raw.githubusercontent.com/joshiebudd/notionwidgets/main/mac_mockup_trans.png" width="2000" height="800" alt="template" class="centered-image" />
+
     </section>
     
-      <div class="mx-auto max-w-screen-xl px-4 py-8 text-center lg:px-12 lg:py-16">
+      <div class="mx-2 max-w-screen-xl px-4 text-center lg:px-16 lg:py-16">
       </div>
     </section>
-
 
 
 <section class="bg-white benefits-section">
-  <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+  <div class="py-8 pb-20 px-4 mx-auto max-w-screen-xl sm:pt-16 lg:px-56">
     <div class="max-w-screen-md mb-8 lg:mb-16 mx-auto text-center"> <!-- mx-auto and text-center classes added -->
-      <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">Silence the chaos. <br> Channel the flow state </h2> 
-      <p class="text-gray-500 sm:text-xl text-gray-900">The all-in-one notion system your brain has been crying for. <br> Everything in one place, with no distractions.</p>
+      <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">Silence the chaos. <br> Channel the flow state. </h2> 
+      <p class="text-gray-500 sm:text-xl text-gray-900">The all-in-one system your brain has been crying out for. <br> Everything in one place, with no distractions.</p>
     </div>
-    <div class="space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0">
-      <div>
+    <div class="md:grid md:grid-cols-2 md:gap-0 md:space-y-0">
+      <div class="text-center">
         <img src="https://framerusercontent.com/images/5LekmofvUs1St83ldPvtaP9RsI.png" alt="Marketing" class="mx-auto mb-2 w-60 h-60 lg:w-60 lg:h-60">
-        <h3 class="mb-2 text-xl font-bold text-black text-center">Marketing</h3>
+        <h3 class="mb-2 text-xl font-bold text-black">Marketing</h3>
+        <p class="text-gray-500">Placeholder description for Marketing</p>
       </div>
-      <div>
+      <div class="text-center">
         <img src="https://framerusercontent.com/images/5LekmofvUs1St83ldPvtaP9RsI.png" alt="Legal" class="mx-auto mb-2 w-60 h-60 lg:w-60 lg:h-60">
-        <h3 class="mb-2 text-xl font-bold text-black text-center">Legal</h3>
+        <h3 class="mb-2 text-xl font-bold text-black">Legal</h3>
+        <p class="text-gray-500">Placeholder description for Legal</p>
       </div>
 
-      <div>
+      <div class="text-center">
         <img src="https://framerusercontent.com/images/5LekmofvUs1St83ldPvtaP9RsI.png" alt="Finance" class="mx-auto mb-2 w-60 h-60 lg:w-60 lg:h-60">
-        <h3 class="mb-2 text-xl font-bold text-black text-center">Finance</h3>
+        <h3 class="mb-2 text-xl font-bold text-black">Finance</h3>
+        <p class="text-gray-500">Placeholder description for Finance</p>
       </div>
-      <div>
+      <div class="text-center">
         <img src="https://framerusercontent.com/images/5LekmofvUs1St83ldPvtaP9RsI.png" alt="Operations" class="mx-auto mb-2 w-60 h-60 lg:w-60 lg:h-60">
-        <h3 class="mb-2 text-xl font-bold text-black text-center">Operations</h3>
+        <h3 class="mb-2 text-xl font-bold text-black">Operations</h3>
+        <p class="text-gray-500">Placeholder description for Operations</p>
       </div>
     </div>
   </div>
 </section>
 
 
-    
+
+
+<section>
+  <div class="bg-white py-12 px-4">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl leading-10 font-bold text-gray-900">
+        Made for ADHDers, <br> by ADHDers.
+      </h2>
+      <p class="mt-3 max-w-md mx-auto text-base text-gray-500">
+The all-in-one system your brain has been crying out for.
+Everything in one place, with no distractions.      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Task Card -->
+      <div class="p-6 max-w-sm mx-auto bg-gray-50 rounded-lg shadow-md flex items-center space-x-4">
+        <div class="flex-shrink-0">
+                <img src="https://super.so/icon/dark/book-open.svg" alt="Business Automation Icon" style="display: block; margin: auto;">
+        </div>
+        <div>
+          <div class="text-lg font-medium text-black">Tasks and Sub-tasks</div>
+          <p class="text-gray-500">Prioritize your tasks and break bigger tasks into manageable sub-tasks.</p>
+        </div>
+      </div>
+
+   <!-- Task Card -->
+      <div class="p-6 max-w-sm mx-auto bg-gray-50 rounded-lg shadow-md flex items-center space-x-4">
+        <div class="flex-shrink-0">
+                <img src="https://super.so/icon/dark/book-open.svg" alt="Business Automation Icon" style="display: block; margin: auto;">
+        </div>
+        <div>
+          <div class="text-lg font-medium text-black">Tasks and Sub-tasks</div>
+          <p class="text-gray-500">Prioritize your tasks and break bigger tasks into manageable sub-tasks.</p>
+        </div>
+      </div>
+
+       <!-- Task Card -->
+      <div class="p-6 max-w-sm mx-auto bg-gray-50 rounded-lg shadow-md flex items-center space-x-4">
+        <div class="flex-shrink-0">
+                <img src="https://super.so/icon/dark/book-open.svg" alt="Business Automation Icon" style="display: block; margin: auto;">
+        </div>
+        <div>
+          <div class="text-lg font-medium text-black">Tasks and Sub-tasks</div>
+          <p class="text-gray-500">Prioritize your tasks and break bigger tasks into manageable sub-tasks.</p>
+        </div>
+      </div>
+
+      <!-- Task Card -->
+      <div class="p-6 max-w-sm mx-auto bg-gray-50 rounded-lg shadow-md flex items-center space-x-4">
+        <div class="flex-shrink-0">
+                <img src="https://super.so/icon/dark/book-open.svg" alt="Business Automation Icon" style="display: block; margin: auto;">
+        </div>
+        <div>
+          <div class="text-lg font-medium text-black">Tasks and Sub-tasks</div>
+          <p class="text-gray-500">Prioritize your tasks and break bigger tasks into manageable sub-tasks.</p>
+        </div>
+      </div>
+
+   <!-- Task Card -->
+      <div class="p-6 max-w-sm mx-auto bg-gray-50 rounded-lg shadow-md flex items-center space-x-4">
+        <div class="flex-shrink-0">
+                <img src="https://super.so/icon/dark/book-open.svg" alt="Business Automation Icon" style="display: block; margin: auto;">
+        </div>
+        <div>
+          <div class="text-lg font-medium text-black">Tasks and Sub-tasks</div>
+          <p class="text-gray-500">Prioritize your tasks and break bigger tasks into manageable sub-tasks.</p>
+        </div>
+      </div>
+
+       <!-- Task Card -->
+      <div class="p-6 max-w-sm mx-auto bg-gray-50 rounded-lg shadow-md flex items-center space-x-4">
+        <div class="flex-shrink-0">
+                <img src="https://super.so/icon/dark/book-open.svg" alt="Business Automation Icon" style="display: block; margin: auto;">
+        </div>
+        <div>
+          <div class="text-lg font-medium text-black">Tasks and Sub-tasks</div>
+          <p class="text-gray-500">Prioritize your tasks and break bigger tasks into manageable sub-tasks.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<section class="bg-[#FAFAFA] demo-section pt-20">
+  <div class="mx-auto max-w-screen-xl px-4 py-8 text-center lg:px-12 lg:py-16">
+    <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-black md:text-5xl lg:text-4xl">A peek under the hood</h1>
+    <p class="mb-4 text-sm font-normal text-black sm:px-16 lg:text-md md:px-48">Eliminate the struggles of being distracted when juggling programmes and tabs. Ease into a streamlined experience.</p>
+
+    <div class="inline-block p-0 border-8 border-gray-300 border-opacity-20 rounded-lg overflow-hidden">
+      <img src="https://raw.githubusercontent.com/joshiebudd/notionwidgets/main/HP_fs_cap.png" width="1000" height="1200" alt="screenshot of entire homepage" class="centered-image" />
+    </div>
+
+    <div class="mt-4">
+      <a href="#" class="inline-block rounded-xl bg-black mt-2 px-4 py-4 text-xl font-bold text-white hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-600">Get NeuroNotes</a>
+    </div>
+
+    <!-- Star Rating -->
+    <div class="mb-2 flex justify-center">
+      <span class="mt-3 mb-0 text-3xl leading-none text-orange-400">★★★★★</span> 
+    </div>
+
+
+    <!-- Testimonial and Author Info -->
+    <div class="text-center mx-auto mt-4 px-4"> <!-- Centered and added mx-auto for horizontal centering -->
+      <span class="mt-0 text-sm text-gray-800">Neuro Notes has been an absolute game changer for studying with ADHD.<br>
+      Finally, I have a place for my Notes, Flashcards, Essay plans, and everything in a single spot <br>
+      so I no longer get distracted when jumping between tabs. Love it!</span>
+
+      <div class="mt-4"> <!-- Added mt-4 for padding -->
+          <div class="flex justify-center">
+      <img class="w-16 h-16 rounded-full" src="https://raw.githubusercontent.com/joshiebudd/notionwidgets/main/hs_circle.png" alt="Avatar">
+    </div>
+        <h2 class="text-lg font-semibold">Josh Budd</h2>
+        <p class="text-gray-500">Final Year Student @ Loughborough University</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="bg-white benefits-section">
+  <div class="py-8 pb-20 px-4 mx-auto max-w-screen-xl sm:pt-16 lg:px-56">
+    <div class="max-w-screen-md mb-8 lg:mb-16 mx-auto text-center"> <!-- mx-auto and text-center classes added -->
+      <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">Dark mode people, <br> we got you. </h2> 
+    </div>
+
+<img src="https://raw.githubusercontent.com/joshiebudd/notionwidgets/main/mac_laptop_mockup_trans.png" alt="template" />
+
+</section>
+    </section>
+
+<section class="bg-white community-section">
+  <div class="py-0 pb-0 px-4 mx-auto max-w-screen-xl sm:pt-16 lg:px-56">
+    <div class="max-w-screen-md mb-2 lg:mb-16 mx-auto text-center">
+      <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">Join our ADHD <br> Study Buddy Community</h2>
+<p class="mb-0">Access our exclusive community, find fellow ADHDers, learn effective <br> study tools, and stay in the loop with updates and tutorials.</p>
+
+    </div>
+
+
+<div class="max-w-screen-xl px-4 py-1 mt-2 text-center lg:py-16 lg:px-6">
+    <dl class="grid max-w-screen-md text-gray-900 sm:grid-cols-3 dark:text-white">
+      <div class="flex flex-col items-center justify-center py-2">
+        <dt class="mb-1 text-3xl md:text-4xl font-extrabold">500+</dt>
+        <dd class="font-light text-black dark:text-gray-400">Fellow study buddies</dd>
+      </div>
+      <div class="flex flex-col items-center justify-center py-2">
+        <dt class="mb-1 text-3xl md:text-4xl font-extrabold">15,000+</dt>
+        <dd class="font-light text-black dark:text-gray-400">Notes created</dd>
+      </div>
+      <div class="flex flex-col items-center justify-center py-2">
+        <dt class="mb-1 text-3xl md:text-4xl font-extrabold">40</dt>
+        <dd class="font-light text-black dark:text-gray-400">Countries</dd>
+      </div>
+      
+    </dl>
+  </div>
+</section>
+
+
+
+</section>
+
+
   </body>
 </html>
