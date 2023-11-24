@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Neuro Notion Website</title>
+    <title>NeuroNotes Website</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.1/dist/tailwind.min.css" rel="stylesheet" />
     <style>
       /* You can add other styles here */
@@ -44,12 +44,12 @@ h3 {
     <div class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between">
       <a href="https://www.neuronotes.example.com" class="flex items-center">
         <img src="https://raw.githubusercontent.com/joshiebudd/notionwidgets/main/roundedtranslogo.png" class="mr-3 h-6 sm:h-9" alt="NeuroNotes Logo" />
-        <span class="self-center whitespace-nowrap text-2xl font-semibold text-black">Neuro Notion</span>
+        <span class="self-center whitespace-nowrap text-2xl font-semibold text-black">NeuroNotes</span>
       </a>
       <div class="flex items-center space-x-4 lg:order-2">
-        <a href="/pricing" class="px-2 py-1 text-lg font-thin text-black hover:text-gray-600 hover:dark:text-gray-300">Features</a>
-        <a href="/reviews" class="px-2 py-1 text-lg font-thin text-black hover:text-gray-600 hover:dark:text-gray-300">Pricing</a>
-        <a href="/faqs" class="px-2 py-1 text-lg font-thin text-black hover:text-gray-600 hover:dark:text-gray-300">FAQs</a>
+        <a href="#features" class="px-2 py-1 text-lg font-thin text-black hover:text-gray-600 hover:dark:text-gray-300">Features</a>
+        <a href="#reviews" class="px-2 py-1 text-lg font-thin text-black hover:text-gray-600 hover:dark:text-gray-300">Reviews</a>
+        <a href="#faqs" class="px-2 py-1 text-lg font-thin text-black hover:text-gray-600 hover:dark:text-gray-300">FAQs</a>
  <a href="https://buy.stripe.com/4gwdT10Z9cRk1naaEF" class="rounded-lg bg-black px-6 py-2.5 text-lg font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300">Get Now</a>
       </div>
     </div>
@@ -83,7 +83,7 @@ h3 {
     </section>
 
 
-<section class="bg-white benefits-section">
+<section id="features" class="bg-white benefits-section">
   <div class="py-8 pb-24 px-4 mx-auto max-w-screen-xl sm:pt-4 lg:px-56">
     <div class="max-w-screen-md mb-8 lg:mb-16 mx-auto text-center"> <!-- mx-auto and text-center classes added -->
       <h2 class="mb-4 text-5xl tracking-tight font-bold text-gray-900">Silence the chaos. <br> Channel the flow state. </h2> 
@@ -476,6 +476,24 @@ h3 {
 
 
     </section>
+
+
+<script>
+  document.querySelector('a[href="#features"]').addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const targetElement = document.querySelector('#features');
+
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop,
+        behavior: 'smooth',
+      });
+    }
+  });
+</script>
+
+
 
 
   </body>
