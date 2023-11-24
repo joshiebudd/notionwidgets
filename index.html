@@ -1,140 +1,497 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pomodoro Timer</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        margin-top: 5vw;
-        background-color: #FFFFFF; /* Light cream background */
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NeuroNotes Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.1/dist/tailwind.min.css" rel="stylesheet" />
+    <style>
+      /* You can add other styles here */
+      .hero-section {
+        margin-bottom: 50px; /* Reduce the margin between hero and next section */
+      }
+      .star-rating {
+        margin-bottom: 50px; /* Reduce the margin between stars and text */
+      }
+
+  .centered-image {
+    display: block; /* Images are inline by default, this changes it to a block-level element */
+    margin-left: auto; /* These two margin properties center the block */
+    margin-right: auto;
+    max-width: 100%; /* This will make sure the image is not larger than its container */
+    height: auto; /* This will maintain the aspect ratio of the image */
+  }
+    .tile-container {
+      max-width: 300px; /* Adjust the max-width as needed */
+      margin: 0 auto; /* Center the tiles horizontally */
     }
 
-    #pomodoro-timer {
-        margin: 0 auto;
-        display: inline-block;
-        padding: 1vw;
-    }
-
-    #time {
-        font-size: 10vw; /* Responsive font size based on viewport width */
-        color: #333;
-        display: block; /* To ensure it has full width for alignment */
-        margin: 2vw 0; /* Provide some space above and below the timer */
-    }
-
-    button {
-        font-size: 1.5vw; /* Responsive font size based on viewport width */
-        padding: 1vw 2vw; /* Responsive padding based on viewport width */
-        margin: 1vw; /* Adjusted for aesthetic balance */
-        color: white;
-        background-color: #333; /* Dark gray background for buttons */
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        display: inline-block; /* This will help with alignment */
-        width: auto; /* Auto width to fit content */
-        white-space: nowrap; /* Prevents wrapping of button text */
-    }
-
-    button:hover {
-        background-color: #1a1a1a; /* Slightly darker gray on hover for buttons */
-    }
-
-    /* Ensure buttons do not wrap on small screens */
-@media (max-width: 400px) {
-    #time {
-        font-size: 8vw; /* Adjust the timer font size for smaller screens */
-    }
-    button {
-        font-size: 3.5vw;
-        padding: 0.8vw 1.6vw;
-    }
-}
-</style>
-</head>
-<body>
-<div id="pomodoro-timer">
-    <div id="time">25:00</div>
-    <button onclick="startTimer()">Start</button>
-    <button onclick="pauseTimer()">Pause</button>
-    <button onclick="startBreak()">Break</button>
-    <button onclick="resetTimer()">Reset</button>
-</div>
-
-<audio id="bell" preload="auto">
-    <source src="bell.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-</audio>
-
-<script>
-let isRunning = false;
-let timerInterval = null;
-let breakTime = 5 * 60; // Break time set to 5 minutes
-let sessionTime = 25 * 60; // Session time set to 25 minutes
-let currentTime = sessionTime; // Current time starts at the session time
-
-// Updates the timer display
-function updateDisplay(time) {
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
-    document.getElementById('time').textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+.bordered-image {
+  border: 4px solid #e5e7eb; /* You can adjust the border color and width as needed */
+  border-radius: 4px; /* You can adjust the border radius as needed */
 }
 
-// Starts or resumes the timer
-function startTimer() {
-    if (!isRunning) {
-        isRunning = true;
-        timerInterval = setInterval(() => {
-            currentTime -= 1;
-            updateDisplay(currentTime);
-            
-            if (currentTime <= 0) {
-                clearInterval(timerInterval);
-                playBell();
-                // Automatically starts the break time or you can set it to just stop here
-                // startBreak(); // Uncomment to start the break automatically
-            }
-        }, 1000);
+h3 {
+        color: black; /* This will set the text color of all h3 elements to black */
+      }
+
+    </style>
+  </head>
+  <body>
+
+<header class="fixed top-0 w-full z-50 bg-white/30 backdrop-blur-lg">
+  <nav class="px-8 py-5 lg:px- 6">
+    <div class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between">
+      <a href="https://www.neuronotes.example.com" class="flex items-center">
+        <img src="https://raw.githubusercontent.com/joshiebudd/notionwidgets/main/roundedtranslogo.png" class="mr-3 h-6 sm:h-9" alt="NeuroNotes Logo" />
+        <span class="self-center whitespace-nowrap text-2xl font-semibold text-black">NeuroNotes</span>
+      </a>
+      <div class="flex items-center space-x-4 lg:order-2">
+        <a href="/pricing" class="px-2 py-1 text-lg font-thin text-black hover:text-gray-600 hover:dark:text-gray-300">Pricing</a>
+        <a href="/reviews" class="px-2 py-1 text-lg font-thin text-black hover:text-gray-600 hover:dark:text-gray-300">Reviews</a>
+        <a href="/faqs" class="px-2 py-1 text-lg font-thin text-black hover:text-gray-600 hover:dark:text-gray-300">FAQs</a>
+ <a href="https://buy.stripe.com/4gwdT10Z9cRk1naaEF" class="rounded-lg bg-black px-6 py-2.5 text-lg font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300">Get Now</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<section class="bg-gray-50 hero-section pt-8 sm:pt-8 md:pt-16 lg:pt-28">
+
+      <div class="mx-auto max-w-screen-xl px-4 py-8 text-center lg:px-12 lg:py-16">
+        <h1 class="mb-4 text-4xl font-bold leading-none tracking-tight text-black md:text-4xl lg:text-5xl">Supercharge your ADHD Brain <br> with Neuro Notion</h1>
+
+        <p class="mb-6 text-lg font-normal text-black sm:px-16 lg:text-xl xl:px-48">Meet your second brain for studying. Neuro Notion is a Notion template which brings revision notes, flashcards, projects, deadlines and ADHD focus tools into one place.</p>
+
+        <!-- Get NeuroNotes Button (Below "Must-have focus tools" text and above stars) -->
+        <div class="mt-4"> <!-- Increased margin-top for spacing -->
+<a href="https://buy.stripe.com/4gwdT10Z9cRk1naaEF" class="inline-block rounded-lg bg-black mt-2 px-4 py-4 text-base font-bold text-white hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300">Get Neuro Notion</a>
+        </div>
+
+        <!-- Star Rating -->
+        <div class="mb-2 flex justify-center">
+          <span class="mt-3 mb-0 text-3xl leading-none text-orange-400">★★★★★</span> 
+        </div>
+        <span class="mt-0 mb-0 text-sm text-gray-800">4.89/5 from 500+ ADHDers.</span>
+      </div>
+
+ <div class="mx-auto max-w-screen-xl px-4 py-4 text-center lg:px-12 lg:py-4">
+    <img src="https://raw.githubusercontent.com/joshiebudd/notionwidgets/main/mac_mockup_final.png" alt="template" class="centered-image max-w-full lg:max-w-[800px] pb-16" />
+  </div>
+
+
+    </section>
+
+
+<section class="bg-white benefits-section">
+  <div class="py-8 pb-24 px-4 mx-auto max-w-screen-xl sm:pt-4 lg:px-56">
+    <div class="max-w-screen-md mb-8 lg:mb-16 mx-auto text-center"> <!-- mx-auto and text-center classes added -->
+      <h2 class="mb-4 text-5xl tracking-tight font-bold text-gray-900">Silence the chaos. <br> Channel the flow state. </h2> 
+      <p class="text-gray-700 sm:text-xl text-gray-900">The all-in-one system your brain has been crying out for. <br> Everything in one place, with no distractions.</p>
+    </div>
+    <div class="md:grid md:grid-cols-2 gap-x-16 gap-y-4">
+      <div class="text-center">
+        <img src="https://raw.githubusercontent.com/joshiebudd/notionwidgets/main/QuickAddDemo.png" alt="Quick Add Demo" class="mx-auto mb-0 w-80 h-80 lg:w-80 lg:h-80">
+        <h3 class="mb-0 text-xl font-bold text-black">Quick Add</h3>
+        <p class="mb-4 text-gray-700">Add things fast, without distractions.</p>
+      </div>
+      <div class="text-center">
+        <img src="https://raw.githubusercontent.com/joshiebudd/notionwidgets/main/ADHDFocusToolsDemo.png" alt="Quick Add Demo" class="mx-auto mb-0 w-80 h-80 lg:w-80 lg:h-80">
+        <h3 class="mb-0 text-xl font-bold text-black">ADHD Focus Tools</h3>
+        <p class="mb-4 text-gray-700">Built in ADHD Study Timers and Sounds</p>
+      </div>
+
+      <div class="text-center">
+        <img src="https://raw.githubusercontent.com/joshiebudd/notionwidgets/main/FlashcardDemofr.png" alt="Quick Add Demo" class="mx-auto mb-0 w-80 h-80 lg:w-80 lg:h-80">
+     <h3 class="mb-0 text-xl font-bold text-black">Flashcard Tool</h3>
+        <p class="text-gray-700">Create and Revise flashcards from your notes.</p>
+      </div>
+      <div class="text-center">
+        <img src="https://raw.githubusercontent.com/joshiebudd/notionwidgets/main/AIEssayPlanDemo2.png" alt="Quick Add Demo" class="mx-auto mb-0 w-80 h-80 lg:w-80 lg:h-80">
+        <h3 class="mb-0 text-xl font-bold text-black">Operations</h3>
+        <p class="text-gray-500">Placeholder description for Operations</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="bg-white features_section mb-16">
+  <div class="bg-white pt-20 pb-20 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 class="text-4xl leading-10 font-bold text-gray-900">
+          Made for ADHDers, <br> by ADHDers.
+        </h2>
+        <p class="mt-3 max-w-md mx-auto text-base text-gray-700 pb-8">
+          The all-in-one system your brain has been crying out for. Everything in one place, with no distractions.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Task Card 1 -->
+        <div class="p-7 max-w-sm mx-auto bg-gray-50 rounded-lg shadow-md flex flex-col items-center">
+          <div class="flex-shrink-0">
+            <img class="w-10 h-10" src="https://img.icons8.com/ios-filled/50/planner.png" alt="planner">
+          </div>
+          <div class="pt-5 text-lg font-semibold text-black">Seamless Organisation</div>
+          <p class="pt-1 text-gray-700 text-center">No more distractions. Set tasks, reminders, deadlines, schedules all in one place.</p>
+        </div>
+
+        <!-- Task Card 2 -->
+        <div class="p-7 max-w-sm mx-auto bg-gray-50 rounded-lg shadow-md flex flex-col items-center">
+          <div class="flex-shrink-0">
+            <img class="w-12 h-12" src="https://img.icons8.com/glyph-neue/64/artificial-intelligence.png" alt="Business Automation Icon" style="display: block">
+          </div>
+          <div class="pt-5 text-lg font-medium text-black">AI Assistance</div>
+          <p class="pt-1 text-gray-700 text-center">Transform notes into essay plans, summarise lecture topics, and more with Notion AI! </p>
+        </div>
+
+        <!-- Task Card 3 -->
+        <div class="p-7 max-w-sm mx-auto bg-gray-50 rounded-lg shadow-md flex flex-col items-center">
+          <div class="flex-shrink-0">
+            <img class="w-10 h-10" src="https://img.icons8.com/ios-glyphs/30/graduation-cap--v1.png" alt="Business Automation Icon" style="display: block">
+          </div>
+          <div class="pt-5 text-lg font-medium text-black">Easy Tutorials</div>
+          <p class="pt-1 text-gray-700 text-center"> Notion beginners can ease into this system with full how-to videos on every page.</p>
+        </div>
+
+        <!-- Task Card 4 -->
+        <div class="p-7 max-w-sm mx-auto bg-gray-50 rounded-lg shadow-md flex flex-col items-center">
+          <div class="flex-shrink-0">
+            <img class="w-10 h-10" src="https://img.icons8.com/ios-filled/50/paint-brush.png" alt="Business Automation Icon" style="display: block">
+          </div>
+          <div class="pt-5 text-lg font-medium text-black">Full Customization</div>
+          <p class="pt-1 text-gray-700 text-center">Like Notion, customization is easy. Change colours, icons, and layout however you like!</p>
+        </div>
+
+        <!-- Task Card 5 -->
+        <div class="p-7 max-w-sm mx-auto bg-gray-50 rounded-lg shadow-md flex flex-col items-center">
+          <div class="flex-shrink-0">
+            <img class="w-10 h-10" src="https://img.icons8.com/external-kmg-design-glyph-kmg-design/32/external-transfer-arrows-kmg-design-glyph-kmg-design.png" alt="Business Automation Icon" style="display: block">
+          </div>
+          <div class="pt-5 text-lg font-medium text-black">Easy Migration</div>
+          <p class="pt-1 text-gray-700 text-center">Moving from another platform is as easy as 1,2, CTRL + V ... Just Copy, Paste, and Go!</p>
+        </div>
+
+        <!-- Task Card 6 -->
+        <div class="p-7 max-w-sm mx-auto bg-gray-50 rounded-lg shadow-md flex flex-col items-center">
+          <div class="flex-shrink-0">
+            <img class="w-10 h-10" src="https://img.icons8.com/sf-black-filled/64/opened-folder.png" alt="Business Automation Icon" style="display: block">
+          </div>
+          <div class="pt-5 text-lg font-medium text-black">Centralised Storage</div>
+          <p class="pt-1 text-gray-700 text-center">Revision Notes, Flashcards, Essay plans, and Extra Reading - all just one click away.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="bg-gray-50 demo-section pt-10 mt-16">
+  <div class="mx-auto max-w-screen-xl px-4 py-8 text-center lg:px-12 lg:py-16">
+    <h1 class="mb-4 text-4xl font-bold leading-none tracking-tight text-black md:text-5xl lg:text-4xl">A peek under the hood</h1>
+    <p class="mb-4 text-sm font-normal text-black sm:px-16 lg:text-md md:px-48">Eliminate the struggles of being distracted when juggling programs and tabs. Ease into a streamlined experience.</p>
+
+    <div class="inline-block p-0 border-8 border-gray-300 border-opacity-20 rounded-lg overflow-hidden">
+      <img src="https://raw.githubusercontent.com/joshiebudd/notionwidgets/main/neuronotion_homepage_fullsc.png" width="1000" height="1200" alt="screenshot of entire homepage" class="centered-image" />
+    </div>
+
+    <div class="mt-4">
+<a href="https://buy.stripe.com/4gwdT10Z9cRk1naaEF" class="inline-block rounded-xl bg-black mt-2 px-4 py-4 text-xl font-bold text-white hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-600">Get Neuro Notion</a>
+
+    </div>
+
+    <!-- Star Rating -->
+    <div class="mb-2 flex justify-center">
+      <span class="mt-3 mb-0 text-3xl leading-none text-orange-400">★★★★★</span> 
+    </div>
+
+
+    <!-- Testimonial and Author Info -->
+    <div class="text-center mx-auto mt-4 px-4"> <!-- Centered and added mx-auto for horizontal centering -->
+      <span class="mt-0 text-sm text-gray-800">"Neuro Notion has been an absolute game changer for studying with ADHD.<br>
+      Finally, I have a place for my Notes, Flashcards, Essay plans, and everything in a single spot <br>
+      so I no longer get distracted when jumping between tabs. Love it!"</span>
+
+      <div class="mt-4"> <!-- Added mt-4 for padding -->
+          <div class="flex justify-center">
+      <img class="w-16 h-16 rounded-full" src="https://raw.githubusercontent.com/joshiebudd/notionwidgets/main/hs_circle.png" alt="Avatar">
+    </div>
+        <h2 class="text-lg font-semibold">Josh Budd</h2>
+        <p class="text-gray-500">Final Year Student @ Loughborough University</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="bg-white darkmode-section">
+  <div class="py-8 pb-20 px-4 mx-auto max-w-screen-xl sm:pt-16 lg:px-56">
+    <div class="max-w-screen-md mb-8 lg:mb-16 mx-auto text-center"> <!-- mx-auto and text-center classes added -->
+      <h2 class="mb-4 text-4xl tracking-tight font-bold text-gray-900">Dark mode people, <br> we got you. </h2>
+      <p >Keep things fresh by toggling dark mode on/off whenever you like, <br> its beautifully satisfying in both.
+  
+    </div>
+
+<img src="https://raw.githubusercontent.com/joshiebudd/notionwidgets/main/mac_laptop_mockup_trans.png" alt="template" />
+
+</section>
+
+
+<section class="bg-gray-50 community-section">
+  <div class="py-0 pb-0 px-4 mx-auto max-w-screen-xl sm:pt-16 lg:px-56">
+    <div class="max-w-screen-md mb-2 lg:mb-16 mx-auto text-center">
+      <h2 class="mb-4 text-4xl tracking-tight font-bold text-gray-900">Join our ADHD <br> Study Buddy Community</h2>
+      <p class="mb-0">Access our exclusive community, find fellow ADHDers, learn effective <br> study tools, and stay in the loop with updates and tutorials.</p>
+    </div>
+
+    <!-- Image Container with Centering Classes -->
+    <div class="flex justify-center">
+      <img src="https://raw.githubusercontent.com/joshiebudd/notionwidgets/main/join_community-removebg-preview.png" alt="join our community mockup" class="mx-auto"/>
+    </div>
+
+    <div class="max-w-screen-xl px-4 py-1 mt-2 text-center lg:py-16 lg:px-6">
+      <dl class="grid max-w-screen-md text-gray-900 sm:grid-cols-3 dark:text-white">
+        <div class="flex flex-col items-center justify-center py-2 sm:w-full md:w-auto">
+          <dt class="mb-1 text-3xl md:text-4xl font-extrabold">500+</dt>
+          <dd class="mb-4 font-light text-black dark:text-gray-400">Fellow study buddies</dd>
+        </div>
+        <div class="flex flex-col items-center justify-center py-2 sm:w-full md:w-auto">
+          <dt class="mb-1 text-3xl md:text-4xl font-extrabold">15,000+</dt>
+          <dd class="mb-4 font-light text-black dark:text-gray-400">Notes created</dd>
+        </div>
+        <div class="flex flex-col items-center justify-center py-2 sm:w-full md:w-auto">
+          <dt class="mb-1 text-3xl md:text-4xl font-extrabold">40</dt>
+          <dd class="mb-4 font-light text-black dark:text-gray-400">Countries</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="bg-white payment_section mt-20 mb-20">
+  <div class="py-8 px-4 md:px-52">
+      <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
+          <h2 class="mb-4 text-4xl tracking-tight font-bold text-black">One Payment, Unlimited Usage.</h2>
+          <p class="mb-5 font-light text-gray-500 sm:text-xl">Lifetime access, technical support, no subscription fees.</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-4">
+          <!-- Pricing Card for Basic -->
+          <div class="flex flex-col p-6 w-80 md:w-72 text-center text-black bg-white rounded-2xl border border-gray-200 shadow-xl">
+              <h3 class="mb-4 text-2xl font-semibold">Basic</h3>
+              <p class="font-light text-black sm:text-lg">One time payment.</p>
+              <div class="flex justify-center items-baseline my-8">
+                  <span class="mr-2 text-5xl font-bold">$7</span>
+              </div>
+                <hr class="border-1 border-gray-300 mb-8"> <!-- Divider line -->
+              <ul role="list" class="mb-8 space-y-4 text-left">
+                  <!-- Tick icon for list items (except the last one) -->
+                  <li><img src="https://super.so/icon/dark/check.svg" alt="Tick Icon" class="inline-block h-6 w-6 mr-2"> All-in-one study system.</li>
+                  <li><img src="https://super.so/icon/dark/check.svg" alt="Tick Icon" class="inline-block h-6 w-6 mr-2"> Built-in focus sounds.</li>
+                  <li><img src="https://super.so/icon/dark/check.svg" alt="Tick Icon" class="inline-block h-6 w-6 mr-2"> AI-generation tutorials.</li>
+                  <li><img src="https://super.so/icon/dark/check.svg" alt="Tick Icon" class="inline-block h-6 w-6 mr-2"> Tutorials included.</li>
+                  <!-- Cross icon for the last list item -->
+                  <li <li class="text-red-700"> <img src="https://img.icons8.com/ios-filled/50/000000/multiply.png" alt="Cross Icon" class="inline-block h-6 w-6 mr-2"> Access to updates.</li>
+              </ul>
+<a href="https://buy.stripe.com/4gwaGP9vF9F84zmcMM" class="text-white bg-black hover:bg-gray-800 focus:ring-4 focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Get Basic</a>
+          </div>
+         <!-- Pricing Card for Standard -->
+          <div class="relative flex flex-col p-6 w-80 md:w-72 text-center text-white bg-black rounded-2xl border border-gray-200 shadow-xl">
+              <!-- Most Popular Tag -->
+              <div class="absolute top-0 right-0 px-3 py-1 bg-blue-600 rounded-bl rounded-tr text-white text-xs uppercase font-bold" style="transform: translate(25%, -50%);">
+                  Most Popular
+              </div>
+              <h3 class="mb-4 text-2xl font-semibold text-white">Standard</h3>
+              <p class="font-light text-white sm:text-lg">One time payment.</p>
+              <div class="flex justify-center items-baseline my-8">
+                  <span class="mr-2 text-5xl font-bold">$10</span>
+              </div>
+                <hr class="border-1 border-gray-300 mb-8"> <!-- Divider line -->
+              <ul role="list" class="mb-8 space-y-4 text-left">
+                  <!-- Check icon for all list items -->
+                  <li><img src="https://super.so/icon/light/check.svg" alt="Check Icon" class="inline-block h-6 w-6 mr-2"> All-in-one study system.</li>
+                  <li><img src="https://super.so/icon/light/check.svg" alt="Check Icon" class="inline-block h-6 w-6 mr-2"> Built-in focus sounds.</li>
+                  <li><img src="https://super.so/icon/light/check.svg" alt="Check Icon" class="inline-block h-6 w-6 mr-2"> AI-generation tutorials.</li>
+                  <li><img src="https://super.so/icon/light/check.svg" alt="Check Icon" class="inline-block h-6 w-6 mr-2"> Tutorials included.</li>
+                  <li><img src="https://super.so/icon/light/check.svg" alt="Check Icon" class="inline-block h-6 w-6 mr-2"> Access to updates.</li>
+              </ul>
+<a href="https://buy.stripe.com/4gwdT10Z9cRk1naaEF" class="text-black bg-white hover:bg-gray-200 focus:ring-4 focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Get Standard</a>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<section class="bg-gray-50 About_neuronotes">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:pt-10 lg:px-6 text-center">
+    <div class="max-w-screen-lg mx-auto text-gray-500 sm:text-lg dark:text-gray-400">
+      <h2 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">About Neuro Notion</h2>
+      <p class="mb-4 font-light">Neuro Notion was founded out of frustration for a lack of tools for people with ADHD. There are so many amazing productivity tools out there, Notion being one of them, but using 10 different apps only leads to inevitable distractions. <br> <br> So, we made it our job to create something simple, but mightily impressive that would leave no choice but to stay focused. <br> <br> We spoke to countless ADHDers and listened to what they wanted in a tool like this - and made exactly that. All of our team use it and find it extremely helpful - and we hope you do too!</p>
+      <p class="mb-4 font-medium">We would love to hear your thoughts or testimonials to display on our website - please reach out and contact the team!</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<section class="bg-white mt-16 mb-16 FAQ_section"> <!-- Set margin-top and margin-bottom to 20 -->
+  <!-- component -->
+  <div class="2xl:container 2xl:mx-auto md:py-12 lg:px-20 md:px-6 py-9 px-4">
+    <h2 class="font-bold dark:text-white lg:text-4xl text-3xl lg:leading-9 md:leading-7 leading-9 text-gray-800">Frequently Asked Questions</h2>
+    <div class="mt-4 flex md:justify-between md:items-start md:flex-row flex-col justify-start items-start">
+      <div class="">
+        <p class="font-normal dark:text-gray-400 text-base leading-6 text-gray-600 lg:w-8/12 md:w-9/12" style="white-space: nowrap;">Here are the answers to some questions you guys have commonly asked us.</p>
+      </div>
+    </div>
+
+    <div class="flex md:flex-row flex-col md:space-x-8 md:mt-16 mt-8">
+      <div class="md:w-7/12 lg:w-8/12 w-full md:mt-0 sm:mt-14 mt-10">
+        <!-- Shipping Section -->
+        <div class="bg-gray-200 rounded-lg p-6 mb-6"> <!-- Add background color, styling, and margin-bottom -->
+          <div class="flex justify-between items-center cursor-pointer">
+            <h3 class="font-semibold text-xl  dark:text-white leading-5 text-gray-800">How does this work?</h3>
+            <button aria-label="too" class="text-gray-800 dark:text-white cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800" onclick="openAnsSection(1)">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path id="path1" class="" d="M10 4.1665V15.8332" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M4.16602 10H15.8327" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+          <p id="para1" class="hidden font-normal dark:text-gray-400 text-base leading-6 text-gray-600 mt-4 w-11/12">After you purchase, you will receive a link to add the homepage to your own Notion account. We will also send you a tutorial video for getting started on Notion incase you're a beginner.</p>
+        </div>
+
+        <!-- Returns Section -->
+        <div class="bg-gray-200 rounded-lg p-6 mb-6"> <!-- Add background color, styling, and margin-bottom -->
+          <div class="flex justify-between items-center cursor-pointer">
+            <h3 class="font-semibold text-xl dark:text-white  leading-5 text-gray-800">Is this worth $10?</h3>
+            <button aria-label="too" class="text-gray-800 dark:text-white cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800" onclick="openAnsSection(2)">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path id="path2" class="" d="M10 4.1665V15.8332" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M4.16602 10H15.8327" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+          <p id="para2" class="hidden font-normal dark:text-gray-400 text-base leading-6 text-gray-600 mt-4 w-11/12">We think absolutely! In fact, we think its worth more and so do many others! For $10, you make just one payment and save countless hours of productive time, avoid stress of juggling 15 different tabs, and streamline your entire organisation process. That's a bargain if you ask me!</p>
+        </div>
+
+        <!-- Exchange Section -->
+        <div class="bg-gray-200 rounded-lg p-6 mb-6"> <!-- Add background color, styling, and margin-bottom -->
+          <div class="flex justify-between items-center cursor-pointer">
+            <h3 class="font-semibold text-xl dark:text-white  leading-5 text-gray-800">Do I need Notion Premium?</h3>
+            <button aria-label="too" class="text-gray-800 dark:text-white cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800" onclick="openAnsSection(3)">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path id="path3" d="M10 4.1665V15.8332" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M4.16602 10H15.8327" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+          <p id="para3" class="hidden font-normal dark:text-gray-400 text-base leading-6 text-gray-600 mt-4 w-11/12">Nope! Notion Free plan is absolutely sufficient - you only need Notion Premium if you want to use the AI features very often</p>
+        </div>
+
+        <!-- Tracking Section -->
+        <div class="bg-gray-200 rounded-lg p-6 mb-6"> <!-- Add background color, styling, and margin-bottom -->
+          <div class="flex justify-between items-center cursor-pointer">
+            <h3 class="font-semibold text-xl dark:text-white  leading-5 text-gray-800">I have more questions!</h3>
+            <button aria-label="too" class="text-gray-800 dark:text-white cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800" onclick="openAnsSection(4)">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path id="path4" d="M10 4.1665V15.8332" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M4.16602 10H15.8327" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+          <p id="para4" class="hidden font-normal dark:text-gray-400 text-base leading-6 text-gray-600 mt-4 w-11/12">If there is something you are still confused about that I haven't answered above; please send an email to joshiebudd@gmail.com and I'll be happy to answer any queries.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function openAnsSection(val) {
+      var p = document.getElementById("para" + val);
+      var svg = document.getElementById("path" + val);
+
+      if (p.classList.contains("hidden")) {
+        p.classList.remove("hidden");
+        p.classList.add("block");
+      } else {
+        p.classList.remove("block");
+        p.classList.add("hidden");
+      }
+
+      if (svg.classList.contains("hidden")) {
+        svg.classList.remove("hidden");
+        svg.classList.add("block");
+      } else {
+        svg.classList.remove("block");
+        svg.classList.add("hidden");
+      }
     }
-}
+  </script>
+</section>
 
-// Pauses the timer
-function pauseTimer() {
-    if (isRunning) {
-        isRunning = false;
-        clearInterval(timerInterval);
-    }
-}
 
-// Resets the timer to the default session time
-function resetTimer() {
-    isRunning = false;
-    clearInterval(timerInterval);
-    currentTime = sessionTime;
-    updateDisplay(currentTime);
-}
 
-// Starts the break time
-function startBreak() {
-    isRunning = false;
-    clearInterval(timerInterval);
-    currentTime = breakTime;
-    updateDisplay(currentTime);
-    startTimer();
-}
 
-// Plays a bell sound when the timer ends
-function playBell() {
-    const bell = document.getElementById('bell');
-    bell.play();
-}
 
-// Initialize the display
-updateDisplay(sessionTime);
-</script>
-</body>
+      <section class="pt-52 pb-52  bg-gray-50 Final_CTA">
+      <div class="mx-auto max-w-screen-xl px-4 py-8 text-center lg:px-12 lg:py-16">
+        <h1 class="mb-6 text-4xl font-bold leading-none tracking-tight text-black md:text-5xl lg:text-6xl">Silence the ADHD Chaos. <br> Make Studying Easy.</h1>
+
+        <p class="mb-6 text-lg font-normal text-black sm:px-16 lg:text-xl xl:px-48">The second brain for studying. Bring revision notes, flashcards, projects, <br>deadlines and ADHD focus tools into one place.</p>
+
+        <!-- Get NeuroNotes Button (Below "Must-have focus tools" text and above stars) -->
+        <div class="mt-4"> <!-- Increased margin-top for spacing -->
+<a href="https://buy.stripe.com/4gwdT10Z9cRk1naaEF" class="inline-block rounded-lg bg-black mt-2 px-6 py-4 text-lg font-semibold text-white hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300">Get Neuro Notion</a>
+
+        </div>
+
+        <!-- Star Rating -->
+        <div class="mb-2 flex justify-center">
+          <span class="mt-4 mb-0 text-3xl leading-none text-orange-400">★★★★★</span> 
+        </div>
+        <span class="mt-0 mb-0 text-md text-gray-800">4.89/5 from 500+ ADHDers.</span>
+      </div>
+
+
+
+    </section>
+
+
+  </body>
+
+<footer class="p-4 bg-black md:p-8 lg:p-10">
+  <div class="mx-auto max-w-screen-xl text-center">
+      <a href="#" class="flex justify-center items-center text-2xl font-semibold text-white">
+                <img src="https://raw.githubusercontent.com/joshiebudd/notionwidgets/main/roundedtranslogo.png" class="mr-3 h-6 sm:h-9" alt="NeuroNotes Logo" /> Neuro Notion ©   
+      </a>
+      <p class="my-6 text-white">The Ultimate Notion Template for Silencing the ADHD Chaos.</p>
+      <ul class="flex flex-wrap justify-center items-center mb-6 text-gray-400">
+          <li>
+              <a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
+          </li>
+          <li>
+              <a href="#" class="mr-4 hover:underline md:mr-6">FAQs</a>
+          </li>
+          <li>
+              <a href="#" class="mr-4 hover:underline md:mr-6">Contact</a>
+          </li>
+      </ul>
+      <span class="text-sm text-white sm:text-center dark:text-gray-400">Neuro Notion © 2023<a href="#" class="hover:underline"></a>. All Rights Reserved.</span>
+  </div>
+</footer>
+  
 </html>
