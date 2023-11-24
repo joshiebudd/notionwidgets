@@ -48,7 +48,7 @@ h3 {
       </a>
       <div class="flex items-center space-x-4 lg:order-2">
         <a href="#features" class="px-2 py-1 text-lg font-thin text-black hover:text-gray-600 hover:dark:text-gray-300">Features</a>
-        <a href="#reviews" class="px-2 py-1 text-lg font-thin text-black hover:text-gray-600 hover:dark:text-gray-300">Reviews</a>
+        <a href="#pricing" class="px-2 py-1 text-lg font-thin text-black hover:text-gray-600 hover:dark:text-gray-300">Pricing</a>
         <a href="#faqs" class="px-2 py-1 text-lg font-thin text-black hover:text-gray-600 hover:dark:text-gray-300">FAQs</a>
  <a href="https://buy.stripe.com/4gwdT10Z9cRk1naaEF" class="rounded-lg bg-black px-6 py-2.5 text-lg font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300">Get Now</a>
       </div>
@@ -282,7 +282,7 @@ h3 {
 
 
 
-<section class="bg-white payment_section mt-20 mb-20">
+<section id="pricing" class="bg-white payment_section mt-20 mb-20">
   <div class="py-8 px-4 md:px-52">
       <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
           <h2 class="mb-4 text-4xl tracking-tight font-bold text-black">One Payment, Unlimited Usage.</h2>
@@ -356,7 +356,7 @@ h3 {
 
 
 
-<section class="bg-white mt-16 mb-16 FAQ_section"> <!-- Set margin-top and margin-bottom to 20 -->
+<section id="faqs" class="bg-white mt-16 mb-16 FAQ_section"> <!-- Set margin-top and margin-bottom to 20 -->
   <!-- component -->
   <div class="2xl:container 2xl:mx-auto md:py-12 lg:px-20 md:px-6 py-9 px-4">
     <h2 class="font-bold dark:text-white lg:text-4xl text-3xl lg:leading-9 md:leading-7 leading-9 text-gray-800">Frequently Asked Questions</h2>
@@ -493,7 +493,35 @@ h3 {
   });
 </script>
 
+<script>
+  document.querySelector('a[href="#pricing"]').addEventListener('click', function (e) {
+    e.preventDefault();
 
+    const targetElement = document.querySelector('#pricing');
+
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop,
+        behavior: 'smooth',
+      });
+    }
+  });
+</script>
+
+<script>
+  document.querySelector('a[href="#faqs"]').addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const targetElement = document.querySelector('#faqs');
+
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop,
+        behavior: 'smooth',
+      });
+    }
+  });
+</script>
 
 
   </body>
