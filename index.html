@@ -40,6 +40,26 @@ h3 {
 
 
     </style>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s) {
+            if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)
+        }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '230622039592089');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none" 
+        src="https://www.facebook.com/tr?id=230622039592089&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+    
   </head>
 <body class="pt-20">
 
@@ -56,7 +76,7 @@ h3 {
         <a href="#pricing" class="px-2 py-1 text-lg font-thin text-black hover:text-gray-600">Pricing</a>
         <a href="#faqs" class="px-2 py-1 text-lg font-thin text-black hover:text-gray-600">FAQs</a>
       </div>
-      <a href="https://buy.stripe.com/4gwdT10Z9cRk1naaEF" class="rounded-lg bg-black px-6 py-2.5 text-lg font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300">Get Now</a>
+      <a href="https://buy.stripe.com/4gwdT10Z9cRk1naaEF" class="StandardCheckoutButton rounded-lg bg-black px-6 py-2.5 text-lg font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300">Get Now</a>
     </div>
   </nav>
 </div>
@@ -73,7 +93,7 @@ h3 {
         <!-- Buttons Container -->
         <div class="mt-4 flex justify-center space-x-4"> <!-- Flex container with spacing -->
             <!-- Get NeuroNotes Button -->
-            <a href="https://buy.stripe.com/4gwdT10Z9cRk1naaEF" class="inline-block rounded-lg bg-black px-4 py-4 text-base font-bold text-white hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300">Get Template</a>
+            <a href="https://buy.stripe.com/4gwdT10Z9cRk1naaEF" class="StandardCheckoutButton inline-block rounded-lg bg-black px-4 py-4 text-base font-bold text-white hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300">Get Now</a>
 
             <!-- See Demo Button -->
 <a href="https://theblogspace.notion.site/Neuro-Notion-Demo-284db580f4d24f51b30d935b1b2eea9e?pvs=4" target="_blank" class="inline-block rounded-lg bg-gray-300 px-4 py-4 text-base font-bold text-black hover:bg-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300">View Demo</a>
@@ -210,7 +230,7 @@ h3 {
     </div>
 
     <div class="mt-4">
-<a href="https://buy.stripe.com/4gwdT10Z9cRk1naaEF" class="inline-block rounded-xl bg-black mt-2 px-4 py-4 text-xl font-bold text-white hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-600">Get Neuro Notion</a>
+<a href="https://buy.stripe.com/4gwdT10Z9cRk1naaEF" class="StandardCheckoutButton inline-block rounded-xl bg-black mt-2 px-4 py-4 text-xl font-bold text-white hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-600">Get Neuro Notion</a>
 
     </div>
 
@@ -338,7 +358,7 @@ h3 {
                   <li><img src="https://super.so/icon/light/check.svg" alt="Check Icon" class="inline-block h-6 w-6 mr-2"> Tutorials included.</li>
                   <li><img src="https://super.so/icon/light/check.svg" alt="Check Icon" class="inline-block h-6 w-6 mr-2"> Access to updates.</li>
               </ul>
-<a href="https://buy.stripe.com/4gwdT10Z9cRk1naaEF" class="text-black bg-white hover:bg-gray-200 focus:ring-4 focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Get Standard</a>
+<a href="https://buy.stripe.com/4gwdT10Z9cRk1naaEF" class="StandardCheckoutButton text-black bg-white hover:bg-gray-200 focus:ring-4 focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Get Standard</a>
           </div>
       </div>
   </div>
@@ -474,7 +494,7 @@ h3 {
 
         <!-- Get NeuroNotes Button (Below "Must-have focus tools" text and above stars) -->
         <div class="mt-4"> <!-- Increased margin-top for spacing -->
-<a href="https://buy.stripe.com/4gwdT10Z9cRk1naaEF" class="inline-block rounded-lg bg-black mt-2 px-6 py-4 text-lg font-semibold text-white hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300">Get Neuro Notion</a>
+<a href="https://buy.stripe.com/4gwdT10Z9cRk1naaEF" class="StandardCheckoutButton inline-block rounded-lg bg-black mt-2 px-6 py-4 text-lg font-semibold text-white hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300">Get Neuro Notion</a>
 
         </div>
 
@@ -536,6 +556,15 @@ h3 {
 </script>
 
 
+    <script>
+        document.querySelectorAll('.StandardCheckoutButton').forEach(button => {
+            button.addEventListener('click', function() {
+                fbq('track', 'InitiateCheckout');
+            });
+        });
+    </script>
+
+    
 <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
