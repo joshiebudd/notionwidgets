@@ -37,10 +37,10 @@
     transition: transform 0.3s ease-in-out;
   }
 
-  /* Show the full header on scroll */
-  .show-full-header .full-header {
-    transform: translateY(0);
-  }
+.show-full-header .full-header {
+  transform: translateY(0);
+  opacity: 1;
+}
 
 
 h3 {
@@ -63,7 +63,7 @@ h3 {
   </div>
 </div>
 
-<div class="full-header hidden fixed top-0 left-0 right-0 bg-white lg:bg-opacity-30 lg:backdrop-blur-lg" style="backdrop-filter: blur(10px);">
+<div class="full-header fixed top-0 left-0 right-0 bg-white lg:bg-opacity-30 lg:backdrop-blur-lg" style="backdrop-filter: blur(10px); transform: translateY(-100%); opacity: 0; transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;">
   <nav class="px-8 py-5 lg:px-6">
     <div class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between">
       <a href="https://www.neuronotes.example.com" class="flex items-center">
