@@ -386,35 +386,37 @@ h3 {
 
 
 
-<section id="faqs" class="bg-white mt-16 mb-16 FAQ_section"> <!-- Set margin-top and margin-bottom to 20 -->
-  <!-- component -->
-  <div class="2xl:container 2xl:mx-auto md:py-12 lg:px-20 md:px-6 py-9 px-4">
-    <h2 class="font-bold dark:text-white lg:text-4xl text-3xl lg:leading-9 md:leading-7 leading-9 text-gray-800">Frequently Asked Questions</h2>
-    <div class="mt-4 flex md:justify-between md:items-start md:flex-row flex-col justify-start items-start">
-      <div class="">
-<p class="font-normal dark:text-gray-400 text-base leading-6 text-gray-600 lg:w-8/12 md:w-9/12">
-  Here are the answers to some questions you guys have commonly asked us.
-</p>
-      </div>
-    </div>
+    <section id="faqs" class="bg-white mt-20 mb-20 FAQ_section">
+        <!-- component -->
+        <div class="2xl:container 2xl:mx-auto md:py-12 lg:px-20 md:px-6 py-9 px-4">
+            <!-- Section Heading -->
+            <h2 class="font-bold dark:text-white lg:text-4xl text-3xl lg:leading-9 md:leading-7 leading-9 text-gray-800">Frequently Asked Questions</h2>
+            <div class="mt-4 flex md:justify-between md:items-start md:flex-row flex-col justify-start items-start">
+                <div class="">
+                    <p class="font-normal dark:text-gray-400 text-base leading-6 text-gray-600 lg:w-8/12 md:w-9/12">
+                        Here are the answers to some questions you guys have commonly asked us.
+                    </p>
+                </div>
+            </div>
 
-    <div class="flex md:flex-row flex-col md:space-x-8 md:mt-16 mt-8">
-      <div class="md:w-7/12 lg:w-8/12 w-full md:mt-0 sm:mt-14 mt-10">
-        <!-- Shipping Section -->
-        <div class="bg-gray-200 rounded-lg p-6 mb-6"> <!-- Add background color, styling, and margin-bottom -->
-          <div class="flex justify-between items-center cursor-pointer">
-            <h3 class="font-semibold text-xl  dark:text-white leading-5 text-gray-800">How does this work?</h3>
-            <button aria-label="too" class="text-gray-800 dark:text-white cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800" onclick="openAnsSection(1)">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path id="path1" class="" d="M10 4.1665V15.8332" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M4.16602 10H15.8327" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </button>
-          </div>
-          <p id="para1" class="hidden font-normal dark:text-gray-400 text-base leading-6 text-gray-600 mt-4 w-11/12">After you purchase, you will receive a link to add the homepage to your own Notion account. We will also send you a tutorial video for getting started on Notion incase you're a beginner.</p>
-        </div>
+            <!-- FAQ Cards -->
+            <div class="flex md:flex-row flex-col md:space-x-8 md:mt-16 mt-8">
+                <div class="md:w-7/12 lg:w-8/12 w-full md:mt-0 sm:mt-14 mt-10">
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-gray-200 rounded-lg p-6 mb-6" onclick="openAnsSection(event, 1)">
+                        <div class="flex justify-between items-center cursor-pointer">
+                            <h3 class="font-semibold text-xl dark:text-white leading-5 text-gray-800">How does this work?</h3>
+                            <!-- Plus Icon -->
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path id="path1" class="" d="M10 4.1665V15.8332" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M4.16602 10H15.8327" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <p id="para1" class="hidden font-normal dark:text-gray-400 text-base leading-6 text-gray-600 mt-4 w-11/12">
+                            After you purchase, you will receive a link to add the homepage to your own Notion account...
+                        </p>
+                    </div>
 
-        <!-- Returns Section -->
         <div class="bg-gray-200 rounded-lg p-6 mb-6"> <!-- Add background color, styling, and margin-bottom -->
           <div class="flex justify-between items-center cursor-pointer">
             <h3 class="font-semibold text-xl dark:text-white  leading-5 text-gray-800">Is this worth $10?</h3>
@@ -428,7 +430,6 @@ h3 {
           <p id="para2" class="hidden font-normal dark:text-gray-400 text-base leading-6 text-gray-600 mt-4 w-11/12">We think absolutely! In fact, we think its worth more and so do many others! For $10, you make just one payment and save countless hours of productive time, avoid stress of juggling 15 different tabs, and streamline your entire organisation process. That's a bargain if you ask me!</p>
         </div>
 
-        <!-- Exchange Section -->
         <div class="bg-gray-200 rounded-lg p-6 mb-6"> <!-- Add background color, styling, and margin-bottom -->
           <div class="flex justify-between items-center cursor-pointer">
             <h3 class="font-semibold text-xl dark:text-white  leading-5 text-gray-800">Do I need Notion Premium?</h3>
@@ -442,7 +443,6 @@ h3 {
           <p id="para3" class="hidden font-normal dark:text-gray-400 text-base leading-6 text-gray-600 mt-4 w-11/12">Nope! Notion Free plan is absolutely sufficient - you only need Notion Premium if you want to use the AI features very often</p>
         </div>
 
-        <!-- Tracking Section -->
         <div class="bg-gray-200 rounded-lg p-6 mb-6"> <!-- Add background color, styling, and margin-bottom -->
           <div class="flex justify-between items-center cursor-pointer">
             <h3 class="font-semibold text-xl dark:text-white  leading-5 text-gray-800">I have more questions!</h3>
@@ -458,29 +458,34 @@ h3 {
       </div>
     </div>
   </div>
+</section>
+
     <script defer>
-        function openAnsSection(val) {
-            var p = document.getElementById("para" + val);
-            var svg = document.getElementById("path" + val);
+        function openAnsSection(event, val) {
+            // Check if the clicked element is not a button or link
+            if (event.target.tagName !== 'BUTTON' && event.target.tagName !== 'A') {
+                var p = document.getElementById("para" + val);
+                var svg = document.getElementById("path" + val);
 
-            if (p.classList.contains("hidden")) {
-                p.classList.remove("hidden");
-                p.classList.add("block");
-            } else {
-                p.classList.remove("block");
-                p.classList.add("hidden");
-            }
+                if (p.classList.contains("hidden")) {
+                    p.classList.remove("hidden");
+                    p.classList.add("block");
+                } else {
+                    p.classList.remove("block");
+                    p.classList.add("hidden");
+                }
 
-            if (svg.classList.contains("hidden")) {
-                svg.classList.remove("hidden");
-                svg.classList.add("block");
-            } else {
-                svg.classList.remove("block");
-                svg.classList.add("hidden");
+                if (svg.classList.contains("hidden")) {
+                    svg.classList.remove("hidden");
+                    svg.classList.add("block");
+                } else {
+                    svg.classList.remove("block");
+                    svg.classList.add("hidden");
+                }
             }
         }
     </script>
-</section>
+
 
 
 
