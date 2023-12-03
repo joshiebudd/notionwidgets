@@ -417,44 +417,51 @@ h3 {
                         </p>
                     </div>
 
-        <div class="bg-gray-200 rounded-lg p-6 mb-6"> <!-- Add background color, styling, and margin-bottom -->
-          <div class="flex justify-between items-center cursor-pointer">
-            <h3 class="font-semibold text-xl dark:text-white  leading-5 text-gray-800">Is this worth $10?</h3>
-            <button aria-label="too" class="text-gray-800 dark:text-white cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800" onclick="openAnsSection(2)">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path id="path2" class="" d="M10 4.1665V15.8332" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M4.16602 10H15.8327" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </button>
-          </div>
-          <p id="para2" class="hidden font-normal dark:text-gray-400 text-base leading-6 text-gray-600 mt-4 w-11/12">We think absolutely! In fact, we think its worth more and so do many others! For $10, you make just one payment and save countless hours of productive time, avoid stress of juggling 15 different tabs, and streamline your entire organisation process. That's a bargain if you ask me!</p>
-        </div>
+<!-- FAQ Item 2 -->
+<div class="bg-gray-200 rounded-lg p-6 mb-6" onclick="openAnsSection(event, 2)">
+    <div class="flex justify-between items-center cursor-pointer">
+        <h3 class="font-semibold text-xl dark:text-white leading-5 text-gray-800">Is this worth $10?</h3>
+        <!-- Plus Icon -->
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path id="path2" d="M10 4.1665V15.8332" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M4.16602 10H15.8327" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </div>
+    <p id="para2" class="hidden font-normal dark:text-gray-400 text-base leading-6 text-gray-600 mt-4 w-11/12">
+        We think absolutely! In fact, we think its worth more and so do many others! ...
+    </p>
+</div>
 
-        <div class="bg-gray-200 rounded-lg p-6 mb-6"> <!-- Add background color, styling, and margin-bottom -->
-          <div class="flex justify-between items-center cursor-pointer">
-            <h3 class="font-semibold text-xl dark:text-white  leading-5 text-gray-800">Do I need Notion Premium?</h3>
-            <button aria-label="too" class="text-gray-800 dark:text-white cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800" onclick="openAnsSection(3)">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path id="path3" d="M10 4.1665V15.8332" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M4.16602 10H15.8327" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </button>
-          </div>
-          <p id="para3" class="hidden font-normal dark:text-gray-400 text-base leading-6 text-gray-600 mt-4 w-11/12">Nope! Notion Free plan is absolutely sufficient - you only need Notion Premium if you want to use the AI features very often</p>
-        </div>
+<!-- FAQ Item 3 -->
+<div class="bg-gray-200 rounded-lg p-6 mb-6" onclick="openAnsSection(event, 3)">
+    <div class="flex justify-between items-center cursor-pointer">
+        <h3 class="font-semibold text-xl dark:text-white leading-5 text-gray-800">Do I need Notion Premium?</h3>
+        <!-- Plus Icon -->
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path id="path3" d="M10 4.1665V15.8332" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M4.16602 10H15.8327" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </div>
+    <p id="para3" class="hidden font-normal dark:text-gray-400 text-base leading-6 text-gray-600 mt-4 w-11/12">
+        Nope! Notion Free plan is absolutely sufficient - you only need Notion Premium if you want to use the AI features very often.
+    </p>
+</div>
 
-        <div class="bg-gray-200 rounded-lg p-6 mb-6"> <!-- Add background color, styling, and margin-bottom -->
-          <div class="flex justify-between items-center cursor-pointer">
-            <h3 class="font-semibold text-xl dark:text-white  leading-5 text-gray-800">I have more questions!</h3>
-            <button aria-label="too" class="text-gray-800 dark:text-white cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800" onclick="openAnsSection(4)">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path id="path4" d="M10 4.1665V15.8332" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M4.16602 10H15.8327" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </button>
-          </div>
-          <p id="para4" class="hidden font-normal dark:text-gray-400 text-base leading-6 text-gray-600 mt-4 w-11/12">If there is something you are still confused about that I haven't answered above; please send an email to joshiebudd@gmail.com and I'll be happy to answer any queries.</p>
-        </div>
+<!-- FAQ Item 4 -->
+<div class="bg-gray-200 rounded-lg p-6 mb-6" onclick="openAnsSection(event, 4)">
+    <div class="flex justify-between items-center cursor-pointer">
+        <h3 class="font-semibold text-xl dark:text-white leading-5 text-gray-800">I have more questions!</h3>
+        <!-- Plus Icon -->
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path id="path4" d="M10 4.1665V15.8332" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M4.16602 10H15.8327" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </div>
+    <p id="para4" class="hidden font-normal dark:text-gray-400 text-base leading-6 text-gray-600 mt-4 w-11/12">
+        If there is something you are still confused about that I haven't answered above; please send an email to [email address] and I'll be happy to answer any queries.
+    </p>
+</div>
+
       </div>
     </div>
   </div>
