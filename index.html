@@ -540,6 +540,23 @@ h3 {
 </script>
 
 <script>
+  document.querySelectorAll('.StandardCheckoutButton').forEach(button => {
+    button.addEventListener('click', function(e) {
+      e.preventDefault(); // Prevent the default anchor behavior
+
+      const pricingSection = document.querySelector('#pricing');
+      if (pricingSection) {
+        window.scrollTo({
+          top: pricingSection.offsetTop - 100, // Adjust offset as needed
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+</script>
+
+    
+<script>
   document.querySelector('a[href="#pricing"]').addEventListener('click', function (e) {
     e.preventDefault();
 
