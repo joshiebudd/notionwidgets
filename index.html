@@ -624,9 +624,9 @@ h3 {
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
 
+    // Tracks Initiate Checkout
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Function to handle the click event
     function trackCheckoutButtonClick() {
       va('event', {
         name: 'CheckoutButtonClick',
@@ -637,13 +637,36 @@ h3 {
       });
     }
 
-    // Adding event listeners to all buttons with the class 'StandardCheckoutButton'
-    document.querySelectorAll('.StripeStandardPlan').forEach(button => {
+      document.querySelectorAll('.StripeStandardPlan').forEach(button => {
       button.addEventListener('click', trackCheckoutButtonClick);
     });
   });
 </script>
 
+    
+// Tracks bounce rate
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    let pageLoadedTime = Date.now();
+
+    function trackQuickExit() {
+      let timeSpent = Date.now() - pageLoadedTime;
+      if (timeSpent <= 5000) { // 5000 milliseconds = 5 seconds
+        va('event', {
+          name: 'QuickPageExit',
+          data: {
+            timeSpent: timeSpent
+          },
+        });
+      }
+    }
+
+    window.addEventListener('beforeunload', trackQuickExit);
+  });
+</script>
+
+    
+    
 
   </body>
 
