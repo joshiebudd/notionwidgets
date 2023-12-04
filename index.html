@@ -70,7 +70,7 @@ h3 {
 <div class="full-header fixed top-0 left-0 right-0 bg-white lg:bg-opacity-30 lg:backdrop-blur-lg" style="backdrop-filter: blur(10px);">
   <nav class="px-8 py-5 lg:px-6">
     <div class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between">
-      <a href="https://www.neuronotes.example.com" class="flex items-center">
+      <a href="#hero" class="flex items-center">
         <img src="https://raw.githubusercontent.com/joshiebudd/notionwidgets/main/roundedtranslogo.png" class="mr-3 h-6 sm:h-9" alt="NeuroNotes Logo" />
         <span class="self-center whitespace-nowrap text-2xl font-semibold text-black">Neuro Notion</span>
       </a>
@@ -88,7 +88,7 @@ h3 {
 
 
 
-<section class="bg-gray-50 hero-section pt-8 sm:pt-8 md:pt-16 lg:pt-28">
+<section id="hero" class="bg-gray-50 hero-section pt-8 sm:pt-8 md:pt-16 lg:pt-28">
     <div class="mx-auto max-w-screen-xl px-4 py-8 text-center lg:px-12 lg:py-16">
         <h1 class="mb-10 text-4xl font-bold leading-none tracking-tight text-black md:text-4xl lg:text-5xl">Maximize your ADHD Brain <br> with Neuro Notion</h1>
         <p class="mb-10 text-lg font-normal text-black sm:px-16 lg:text-xl xl:px-48">Your second brain for studying. The Ultimate Notion template for combining revision notes, flashcards, projects, deadlines and ADHD focus tools into one place.</p>
@@ -372,7 +372,7 @@ h3 {
 
 
 
-<section class="bg-gray-50 About_neuronotes">
+<section id="about" class="bg-gray-50 About_neuronotes">
   <div class="py-8 px-4 mx-auto max-w-screen-xl lg:pt-10 lg:px-6 text-center">
     <div class="max-w-screen-lg mx-auto text-gray-500 sm:text-lg dark:text-gray-400">
       <h2 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">About Neuro Notion</h2>
@@ -571,6 +571,38 @@ h3 {
   });
 </script>
 
+
+<script>
+  document.querySelector('a[href="#hero"]').addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const targetElement = document.querySelector('#hero');
+
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop,
+        behavior: 'smooth',
+      });
+    }
+  });
+</script>
+    
+<script>
+  document.querySelector('a[href="#about"]').addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const targetElement = document.querySelector('#about');
+
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop,
+        behavior: 'smooth',
+      });
+    }
+  });
+</script>
+    
+    
 <script>
   document.querySelector('a[href="#faqs"]').addEventListener('click', function (e) {
     e.preventDefault();
@@ -608,22 +640,22 @@ h3 {
 
 <footer class="p-4 bg-black md:p-8 lg:p-10">
   <div class="mx-auto max-w-screen-xl text-center">
-      <a href="#" class="flex justify-center items-center text-2xl font-semibold text-white">
+      <a href="#hero" class="flex justify-center items-center text-2xl font-semibold text-white">
                 <img src="https://raw.githubusercontent.com/joshiebudd/notionwidgets/main/roundedtranslogo.png" class="mr-3 h-6 sm:h-9" alt="NeuroNotes Logo" /> Neuro Notion ©   
       </a>
       <p class="my-6 text-white">The Ultimate Notion Template for Silencing the ADHD Chaos.</p>
       <ul class="flex flex-wrap justify-center items-center mb-6 text-gray-400">
           <li>
-              <a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
+              <a href="#about" class="mr-4 hover:underline md:mr-6 ">About</a>
           </li>
           <li>
-              <a href="#" class="mr-4 hover:underline md:mr-6">FAQs</a>
+              <a href="#faqs" class="mr-4 hover:underline md:mr-6">FAQs</a>
           </li>
           <li>
-              <a href="#" class="mr-4 hover:underline md:mr-6">Contact</a>
+              <a href="mailto:joshiebudd@gmail.com" class="mr-4 hover:underline md:mr-6">Contact</a>
           </li>
       </ul>
-      <span class="text-sm text-white sm:text-center dark:text-gray-400">Neuro Notion © 2023<a href="#" class="hover:underline"></a>. All Rights Reserved.</span>
+      <span class="text-sm text-white sm:text-center dark:text-gray-400">Neuro Notion © 2023<a href="#hero" class="hover:underline"></a>. All Rights Reserved.</span>
   </div>
 </footer>
   
