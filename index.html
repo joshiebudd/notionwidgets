@@ -632,8 +632,26 @@ h3 {
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
-  
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Function to handle the click event
+    function trackCheckoutButtonClick() {
+      va('event', {
+        name: 'CheckoutButtonClick',
+        data: {
+          buttonType: 'StandardCheckoutButton',
+          timestamp: new Date().toISOString()
+        },
+      });
+    }
+
+    // Adding event listeners to all buttons with the class 'StandardCheckoutButton'
+    document.querySelectorAll('.StandardCheckoutButton').forEach(button => {
+      button.addEventListener('click', trackCheckoutButtonClick);
+    });
+  });
+</script>
 
 
   </body>
