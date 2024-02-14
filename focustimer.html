@@ -33,15 +33,7 @@
             font-size: 3em; 
             margin: 20px 0; 
         }
-        #themeToggle { 
-            position: absolute; 
-            top: 10px; 
-            right: 10px; 
-            border: none; 
-            background: none; 
-            cursor: pointer; 
-        }
-        select, input, button { 
+        select, input { 
             padding: 10px; 
             margin-top: 10px; 
             width: 100%; 
@@ -50,11 +42,16 @@
         .hidden { 
             display: none; 
         }
+        .control-buttons img {
+            height: 40px;
+            width: 40px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="light">
     <div id="timerContainer">
-        <button id="themeToggle">☀️</button>
         <select id="timeSelect">
             <option value="5400">90 mins</option>
             <option value="3600">60 mins</option>
@@ -66,10 +63,15 @@
             <button id="customTimeSet">Set</button>
         </div>
         <div id="timerDisplay">25:00</div>
-        <button id="startTimer">Start</button>
-        <button id="pauseTimer" class="hidden">Pause</button>
+        <div class="control-buttons">
+            <!-- Replace 'src' with your image paths -->
+            <img id="playButton" src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/play.png" alt="Play">
+            <img id="pauseButton" src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/pause.png" alt="Pause" class="hidden">
+            <img id="themeToggle" src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/lmdm.png" alt="Toggle Theme">
+            <img id="resetButton" src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/reset.png" alt="Reset">
+        </div>
     </div>
-    <audio id="bellSound" src="bell-ring.mp3"></audio>
+    <audio id="bellSound" src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/bell.mp3"></audio>
     <script>
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
@@ -78,8 +80,9 @@
         const customTimeInput = document.getElementById('customTimeInput');
         const customTimeSet = document.getElementById('customTimeSet');
         const timerDisplay = document.getElementById('timerDisplay');
-        const startTimerButton = document.getElementById('startTimer');
-        const pauseTimerButton = document.getElementById('pauseTimer');
+        const playButton = document.getElementById('playButton');
+        const pauseButton = document.getElementById('pauseButton');
+        const resetButton = document.getElementById('resetButton');
         const bellSound = document.getElementById('bellSound');
 
         let countdown;
@@ -89,7 +92,7 @@
         themeToggle.addEventListener('click', () => {
             body.classList.toggle('dark');
             body.classList.toggle('light');
-            themeToggle.textContent = body.classList.contains('dark') ? '🌙' : '☀️';
+            themeToggle.src = body.classList.contains('dark') ? 'https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/lmtoggle.png' : 'https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/dmtoggle.png';
         });
 
         timeSelect.addEventListener('change', (e) => {
@@ -104,17 +107,24 @@
             startTimer(parseInt(customTimeInput.value) * 60);
         });
 
-        startTimerButton.addEventListener('click', () => {
+        playButton.addEventListener('click', () => {
             isPaused = false;
             let duration = timeSelect.value === 'custom' ? parseInt(customTimeInput.value) * 60 : parseInt(timeSelect.value);
             startTimer(duration);
         });
 
-        pauseTimerButton.addEventListener('click', () => {
+        pauseButton.addEventListener('click', () => {
             clearInterval(countdown);
-            pauseTimerButton.classList.add('hidden');
-            startTimerButton.classList.remove('hidden');
+            pauseButton.classList.add('hidden');
+            playButton.classList.remove('hidden');
             isPaused = true;
+        });
+
+        resetButton.addEventListener('click', () => {
+            clearInterval(countdown);
+            updateTimer(initialTime);
+            playButton.classList.remove('hidden');
+            pauseButton.classList.add('hidden');
         });
 
         function startTimer(duration) {
@@ -136,8 +146,8 @@
                 updateTimer(secondsLeft);
             }, 1000);
 
-            startTimerButton.classList.add('hidden');
-            pauseTimerButton.classList.remove('hidden');
+            playButton.classList.add('hidden');
+            pauseButton.classList.remove('hidden');
         }
 
         function startBreakTimer(duration) {
