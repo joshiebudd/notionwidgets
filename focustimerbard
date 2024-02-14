@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Focus Timer</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #232F34;
+      color: #fff;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    #timerContainer {
+      background-color: #3C434B;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      width: 400px;
+      padding: 30px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    #timerDisplay {
+      font-size: 60px;
+      font-weight: bold;
+      margin: 20px 0;
+      color: #fff;
+    }
+
+    select, input {
+      padding: 10px;
+      margin-top: 10px;
+      width: 100%;
+      box-sizing: border-box;
+      background-color: #3C434B;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .control-buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+
+    .control-buttons img {
+      height: 50px;
+      width: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .control-buttons img:hover {
+      opacity: 0.7;
+    }
+
+    /* Add styles for the dark theme */
+    .dark {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .dark #timerContainer {
+      background-color: #1C2024;
+    }
+
+    .dark select,
+    .dark input {
+      background-color: #1C2024;
+    }
+
+  </style>
+</head>
+<body class="dark">
+  <div id="timerContainer">
+    <select id="timeSelect">
+      <option value="5400">90 mins</option>
+      <option value="3600">60 mins</option>
+      <option value="1500">25 mins</option>
+      <option value="custom">Custom</option>
+    </select>
+    <div id="customTimeEntry" class="hidden">
+      <input type="number" id="customTimeInput" placeholder="Enter minutes">
+      <button id="customTimeSet">Set</button>
+    </div>
+    <div id="timerDisplay">25:00</div>
+    <div class="control-buttons">
+      <img id="playButton" src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/play.png" alt="Play">
+      <img id="pauseButton" src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/pause.png" alt="Pause" class="hidden">
+      <img id="themeToggle" src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/lmtoggle.png" alt="Toggle Theme">
+      <img id="resetButton" src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/reset.png" alt="Reset">
+    </div>
+  </div>
+
+    </div>
+    <audio id="bellSound" src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/bell.mp3"></audio>
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const timeSelect = document.getElementById('timeSelect');
+        const customTimeEntry = document.getElementById('customTimeEntry');
+        const customTimeInput = document.getElementById('customTimeInput');
+        const customTimeSet = document.getElementById('customTimeSet');
+        const timerDisplay = document.getElementById('timerDisplay');
+        const playButton = document.getElementById('playButton');
+        const pauseButton = document.getElementById('pauseButton');
+        const resetButton = document.getElementById('resetButton');
+        const bellSound = document.getElementById('bellSound');
+
+        let countdown;
+        let isPaused = false;
+        let initialTime = 0;
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark');
+            body.classList.toggle('light');
+            themeToggle.src = body.classList.contains('dark') ? 'https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/lmtoggle.png' : 'https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/dmtoggle.png';
+        });
+
+        timeSelect.addEventListener('change', (e) => {
+            if(e.target.value === 'custom') {
+                customTimeEntry.classList.remove('hidden');
+            } else {
+                customTimeEntry.classList.add('hidden');
+            }
+        });
+
+        customTimeSet.addEventListener('click', () => {
+            startTimer(parseInt(customTimeInput.value) * 60);
+        });
+
+        playButton.addEventListener('click', () => {
+            isPaused = false;
+            let duration = timeSelect.value === 'custom' ? parseInt(customTimeInput.value) * 60 : parseInt(timeSelect.value);
+            startTimer(duration);
+        });
+
+        pauseButton.addEventListener('click', () => {
+            clearInterval(countdown);
+            pauseButton.classList.add('hidden');
+            playButton.classList.remove('hidden');
+            isPaused = true;
+        });
+
+        resetButton.addEventListener('click', () => {
+            clearInterval(countdown);
+            updateTimer(initialTime);
+            playButton.classList.remove('hidden');
+            pauseButton.classList.add('hidden');
+        });
+
+        function startTimer(duration) {
+            if (!isPaused) {
+                initialTime = duration;
+            }
+            clearInterval(countdown);
+            updateTimer(duration);
+            const endTime = Date.now() + duration * 1000;
+
+            countdown = setInterval(() => {
+                const secondsLeft = Math.round((endTime - Date.now()) / 1000);
+                if (secondsLeft < 0) {
+                    clearInterval(countdown);
+                    bellSound.play();
+                    startBreakTimer(initialTime);
+                    return;
+                }
+                updateTimer(secondsLeft);
+            }, 1000);
+
+            playButton.classList.add('hidden');
+            pauseButton.classList.remove('hidden');
+        }
+
+        function startBreakTimer(duration) {
+            let breakDuration = Math.round(duration * 0.2);
+            startTimer(breakDuration);
+        }
+
+        function updateTimer(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            timerDisplay.textContent = `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+        }
+    </script>
+</body>
+</html>
