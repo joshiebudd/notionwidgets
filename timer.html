@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomodoro Timer</title>
+    <link href="./tailwind.min.css" rel="stylesheet" />
+  </head>
+  <body
+    class="transition duration-150 h-screen flex items-center justify-center"
+    id="themeContainer"
+  >
+    <div class="text-center px-4 overflow-hidden">
+      <div
+        class="flex flex-row justify-center flex-wrap md:flex-nowrap items-center space-y-0 md:space-x-5"
+      >
+        <div class="flex flex-row md:flex-col order-2 md:order-1">
+          <button id="playButton">
+            <img
+              id="img_play"
+              class="w-10 h-10 cursor-pointer"
+              src="./assets/play.png"
+              alt="Play"
+            />
+          </button>
+          <button id="themeToggle">
+            <img
+              id="img_themeToggle"
+              class="w-10 h-10 cursor-pointer"
+              src="./assets/lmdm.png"
+              alt="Toggle Theme"
+            />
+          </button>
+        </div>
+        <div
+          id="countdown"
+          class="text-4xl md:text-6xl italic min-w-full md:min-w-0 font-bold order-1 md:order-2 focus:outline-none"
+        ></div>
+
+        <div class="flex flex-row md:flex-col order-3">
+          <button id="pauseButton">
+            <img
+              id="img_pause"
+              class="w-10 h-10 cursor-pointer"
+              src="./assets/pause.png"
+              alt="Reset"
+            />
+          </button>
+          <button id="resetButton">
+            <img
+              id="img_reset"
+              class="w-10 h-10 cursor-pointer"
+              src="./assets/reset.png"
+              alt="Reset"
+            />
+          </button>
+        </div>
+      </div>
+      <div class="text-xs flex relative inline-block pt-3 pb-3">
+        <select
+          id="timerSelect"
+          class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+        >
+          <option value="0">
+            Please select the length of your study lesson
+          </option>
+          <option value="1500">25 Mins</option>
+          <option value="3600">60 Mins</option>
+          <option value="5400">90 Mins</option>
+          <option value="custom">Custom</option>
+        </select>
+        <div
+          class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+        >
+          <svg
+            class="fill-current h-4 w-4 mt-3 mb-3"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+          >
+            <path
+              d="M14.293 6.293a1 1 0 0 0-1.414 0L10 9.586 7.707 7.293a1 1 0 1 0-1.414 1.414l3 3a1 1 0 0 0 1.414 0l3-3a1 1 0 0 0 0-1.414z"
+            />
+          </svg>
+        </div>
+      </div>
+      <div class="text-xs flex flex-wrap md:flex-nowrap justify-center">
+        <div
+          class="flex relative flex-col md:min-w-0 overflow-auto will-change-scroll flex-grow"
+        >
+          <select
+            id="timerSelect"
+            class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+          >
+            <option value="0">Please choose focus sounds</option>
+            <option value="1500">Binaural Beats</option>
+            <option value="3600">White Noise</option>
+            <option value="5400">Brown Noise</option>
+            <option value="custom">Beats</option>
+          </select>
+          <div
+            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+          >
+            <svg
+              class="fill-current h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M14.293 6.293a1 1 0 0 0-1.414 0L10 9.586 7.707 7.293a1 1 0 1 0-1.414 1.414l3 3a1 1 0 0 0 1.414 0l3-3a1 1 0 0 0 0-1.414z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <button id="playAudioButton">
+            <img
+              id="audio_play"
+              class="w-10 h-10 cursor-pointer"
+              src="./assets/play.png"
+              alt="Play"
+            />
+          </button>
+        </div>
+        <div class="flex flex-col">
+          <button id="stopAudioButton">
+            <img
+              id="audio_stop"
+              class="w-10 h-10 cursor-pointer"
+              src="./assets/pause.png"
+              alt="Play"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+    <audio id="bellSound" src="./assets/bell.mp3"></audio>
+
+    <script src="countdown.js"></script>
+  </body>
+</html>
