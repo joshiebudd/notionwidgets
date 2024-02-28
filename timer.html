@@ -15,22 +15,22 @@
         class="flex flex-row justify-center flex-wrap md:flex-nowrap items-center space-y-0 md:space-x-5"
       >
         <div class="flex flex-row md:flex-col order-2 md:order-1">
-          <button id="playButton">
+          <div id="playdiv">
             <img
               id="img_play"
               class="w-10 h-10 cursor-pointer"
               src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/play.png"
               alt="Play"
             />
-          </button>
-          <button id="themeToggle">
+          </div>
+          <div id="themeToggle">
             <img
               id="img_themeToggle"
               class="w-10 h-10 cursor-pointer"
               src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/lmdm.png"
               alt="Toggle Theme"
             />
-          </button>
+          </div>
         </div>
         <div
           id="countdown"
@@ -38,22 +38,22 @@
         ></div>
 
         <div class="flex flex-row md:flex-col order-3">
-          <button id="pauseButton">
+          <div id="pausediv">
             <img
               id="img_pause"
               class="w-10 h-10 cursor-pointer"
               src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/pause.png"
               alt="Reset"
             />
-          </button>
-          <button id="resetButton">
+          </div>
+          <div id="resetdiv">
             <img
               id="img_reset"
               class="w-10 h-10 cursor-pointer"
               src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/reset.png"
               alt="Reset"
             />
-          </button>
+          </div>
         </div>
       </div>
       <div class="text-xs flex relative inline-block pt-3 pb-3">
@@ -112,24 +112,24 @@
           </div>
         </div>
         <div class="flex flex-col">
-          <button id="playAudioButton">
+          <div id="playAudiodiv">
             <img
               id="audio_play"
               class="w-10 h-10 cursor-pointer"
               src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/play.png"
               alt="Play"
             />
-          </button>
+          </div>
         </div>
         <div class="flex flex-col">
-          <button id="stopAudioButton">
+          <div id="stopAudiodiv">
             <img
               id="audio_stop"
               class="w-10 h-10 cursor-pointer"
               src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/pause.png"
               alt="Play"
             />
-          </button>
+          </div>
         </div>
       </div>
     </div>
@@ -146,11 +146,11 @@
       const countdownElement = document.getElementById("countdown");
       const timerSelect = document.getElementById("timerSelect");
       const audioSelect = document.getElementById("audioSelect");
-      const playButton = document.getElementById("playButton");
-      const themeToggleButton = document.getElementById("themeToggle");
+      const playdiv = document.getElementById("playdiv");
+      const themeTogglediv = document.getElementById("themeToggle");
       const themeContainer = document.getElementById("themeContainer");
-      const pauseButton = document.getElementById("pauseButton");
-      const resetButton = document.getElementById("resetButton");
+      const pausediv = document.getElementById("pausediv");
+      const resetdiv = document.getElementById("resetdiv");
       const img_themeToggle = document.getElementById("img_themeToggle");
       const img_play = document.getElementById("img_play");
       const img_pause = document.getElementById("img_pause");
@@ -158,8 +158,8 @@
       const img_audio_play = document.getElementById("audio_play");
       const img_audio_stop = document.getElementById("audio_stop");
       const bellSound = document.getElementById("bellSound");
-      const playAudioButton = document.getElementById("playAudioButton");
-      const stopAudioButton = document.getElementById("stopAudioButton");
+      const playAudiodiv = document.getElementById("playAudiodiv");
+      const stopAudiodiv = document.getElementById("stopAudiodiv");
       const breakduration = 300;
       let countdownInterval,
         currentduration,
@@ -219,8 +219,8 @@
           updateCountdownDisplay(customminutes * 60);
         else updateCountdownDisplay(parseInt(timerSelect.value));
         currentduration = timerSelect.value;
-        pauseButton.classList.add("pointer-events-none", "opacity-50");
-        playButton.classList.remove("pointer-events-none", "opacity-50");
+        pausediv.classList.add("pointer-events-none", "opacity-50");
+        playdiv.classList.remove("pointer-events-none", "opacity-50");
       }
 
       countdownElement.addEventListener("input", (event) => {
@@ -240,11 +240,11 @@
         updateCountdownDisplay(timerSelect.value);
         currentduration = timerSelect.value;
         pauseCountdown();
-        pauseButton.classList.add("pointer-events-none", "opacity-50");
-        playButton.classList.remove("pointer-events-none", "opacity-50");
+        pausediv.classList.add("pointer-events-none", "opacity-50");
+        playdiv.classList.remove("pointer-events-none", "opacity-50");
       });
 
-      themeToggleButton.addEventListener("click", () => {
+      themeTogglediv.addEventListener("click", () => {
         if (themeContainer.classList.contains("bg-gray-800")) {
           themeContainer.classList.remove("bg-gray-800");
           countdown.classList.remove("text-gray-50");
@@ -278,7 +278,7 @@
         }
       });
 
-      playButton.addEventListener("click", () => {
+      playdiv.addEventListener("click", () => {
         countdownElement.contentEditable = false;
         const selectedTime = parseInt(
           currentduration === undefined ? timerSelect.value : currentduration
@@ -286,17 +286,17 @@
         customminutes = parseInt(countdownElement.textContent.split(":")[0]);
         if (Number.isNaN(selectedTime)) startCountdown(customminutes * 60);
         else startCountdown(selectedTime);
-        playButton.classList.add("pointer-events-none", "opacity-50");
-        pauseButton.classList.remove("pointer-events-none", "opacity-50");
+        playdiv.classList.add("pointer-events-none", "opacity-50");
+        pausediv.classList.remove("pointer-events-none", "opacity-50");
       });
 
-      pauseButton.addEventListener("click", () => {
+      pausediv.addEventListener("click", () => {
         pauseCountdown();
-        playButton.classList.remove("pointer-events-none", "opacity-50");
-        pauseButton.classList.add("pointer-events-none", "opacity-50");
+        playdiv.classList.remove("pointer-events-none", "opacity-50");
+        pausediv.classList.add("pointer-events-none", "opacity-50");
       });
 
-      resetButton.addEventListener("click", () => {
+      resetdiv.addEventListener("click", () => {
         resetCountdown();
       });
       audioSelect.addEventListener("change", () => {
@@ -305,26 +305,26 @@
           audioSelect.value +
           ".mp3";
         bellSound1.pause();
-        playAudioButton.classList.remove("pointer-events-none", "opacity-50");
-        stopAudioButton.classList.add("pointer-events-none", "opacity-50");
+        playAudiodiv.classList.remove("pointer-events-none", "opacity-50");
+        stopAudiodiv.classList.add("pointer-events-none", "opacity-50");
       });
-      playAudioButton.addEventListener("click", () => {
+      playAudiodiv.addEventListener("click", () => {
         bellSound1.src =
           "https://upright-dolphin-humbly.ngrok-free.app/assets/" +
           audioSelect.value +
           ".mp3";
         bellSound1.play();
-        playAudioButton.classList.add("pointer-events-none", "opacity-50");
-        stopAudioButton.classList.remove("pointer-events-none", "opacity-50");
+        playAudiodiv.classList.add("pointer-events-none", "opacity-50");
+        stopAudiodiv.classList.remove("pointer-events-none", "opacity-50");
       });
-      stopAudioButton.addEventListener("click", () => {
+      stopAudiodiv.addEventListener("click", () => {
         bellSound1.pause();
-        playAudioButton.classList.remove("pointer-events-none", "opacity-50");
-        stopAudioButton.classList.add("pointer-events-none", "opacity-50");
+        playAudiodiv.classList.remove("pointer-events-none", "opacity-50");
+        stopAudiodiv.classList.add("pointer-events-none", "opacity-50");
       });
 
       bellSound1.addEventListener("ended", function () {
-        playAudioButton.classList.remove("pointer-events-none", "opacity-50");
+        playAudiodiv.classList.remove("pointer-events-none", "opacity-50");
       });
     </script>
   </body>
