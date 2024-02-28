@@ -1,165 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Focus Timer</title>
-    <style>
-        body { 
-            font-family: 'Arial', sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-            transition: background-color 0.3s, color 0.3s; 
-        }
-        .light { 
-            background-color: #fff; 
-            color: #000; 
-        }
-        .dark { 
-            background-color: #333; 
-            color: #fff; 
-        }
-        #timerContainer { 
-            width: 300px; 
-            padding: 20px; 
-            box-sizing: border-box; 
-            text-align: center; 
-        }
-        #timerDisplay { 
-            font-size: 3em; 
-            margin: 20px 0; 
-        }
-        select, input { 
-            padding: 10px; 
-            margin-top: 10px; 
-            width: 100%; 
-            box-sizing: border-box; 
-        }
-        .hidden { 
-            display: none; 
-        }
-        .control-buttons img {
-            height: 40px;
-            width: 40px;
-            margin: 0 5px;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body class="light">
-    <div id="timerContainer">
-        <select id="timeSelect">
-            <option value="5400">90 mins</option>
-            <option value="3600">60 mins</option>
-            <option value="1500">25 mins</option>
-            <option value="custom">Custom</option>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomodoro Timer</title>
+    <link href="./tailwind.min.css" rel="stylesheet" />
+  </head>
+  <body
+    class="transition duration-150 h-screen flex items-center justify-center"
+    id="themeContainer"
+  >
+    <div class="text-center px-4 overflow-hidden">
+      <div
+        class="flex flex-row justify-center flex-wrap md:flex-nowrap items-center space-y-0 md:space-x-5"
+      >
+        <div class="flex flex-row md:flex-col order-2 md:order-1">
+          <button id="playButton">
+            <img
+              id="img_play"
+              class="w-10 h-10 cursor-pointer"
+              src="./assets/play.png"
+              alt="Play"
+            />
+          </button>
+          <button id="themeToggle">
+            <img
+              id="img_themeToggle"
+              class="w-10 h-10 cursor-pointer"
+              src="./assets/lmdm.png"
+              alt="Toggle Theme"
+            />
+          </button>
+        </div>
+        <div
+          id="countdown"
+          class="text-4xl md:text-6xl italic min-w-full md:min-w-0 font-bold order-1 md:order-2 focus:outline-none"
+        ></div>
+
+        <div class="flex flex-row md:flex-col order-3">
+          <button id="pauseButton">
+            <img
+              id="img_pause"
+              class="w-10 h-10 cursor-pointer"
+              src="./assets/pause.png"
+              alt="Reset"
+            />
+          </button>
+          <button id="resetButton">
+            <img
+              id="img_reset"
+              class="w-10 h-10 cursor-pointer"
+              src="./assets/reset.png"
+              alt="Reset"
+            />
+          </button>
+        </div>
+      </div>
+      <div class="text-xs flex relative inline-block pt-3 pb-3">
+        <select
+          id="timerSelect"
+          class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+        >
+          <option value="0">
+            Please select the length of your study lesson
+          </option>
+          <option value="1500">25 Mins</option>
+          <option value="3600">60 Mins</option>
+          <option value="5400">90 Mins</option>
+          <option value="custom">Custom</option>
         </select>
-        <div id="customTimeEntry" class="hidden">
-            <input type="number" id="customTimeInput" placeholder="Enter minutes">
-            <button id="customTimeSet">Set</button>
+        <div
+          class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+        >
+          <svg
+            class="fill-current h-4 w-4 mt-3 mb-3"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+          >
+            <path
+              d="M14.293 6.293a1 1 0 0 0-1.414 0L10 9.586 7.707 7.293a1 1 0 1 0-1.414 1.414l3 3a1 1 0 0 0 1.414 0l3-3a1 1 0 0 0 0-1.414z"
+            />
+          </svg>
         </div>
-        <div id="timerDisplay">25:00</div>
-        <div class="control-buttons">
-            <!-- Replace 'src' with your image paths -->
-            <img id="playButton" src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/play.png" alt="Play">
-            <img id="pauseButton" src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/pause.png" alt="Pause" class="hidden">
-            <img id="themeToggle" src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/lmdm.png" alt="Toggle Theme">
-            <img id="resetButton" src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/reset.png" alt="Reset">
+      </div>
+      <div class="text-xs flex flex-wrap md:flex-nowrap justify-center">
+        <div
+          class="flex relative flex-col md:min-w-0 overflow-auto will-change-scroll flex-grow"
+        >
+          <select
+            id="audioSelect"
+            class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+          >
+            <option value="bell">Please choose focus sounds</option>
+            <option value="binauralbeats">Binaural Beats</option>
+            <option value="whitenoise">White Noise</option>
+            <option value="brownnoise">Brown Noise</option>
+            <option value="lofibeats">Beats</option>
+          </select>
+          <div
+            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+          >
+            <svg
+              class="fill-current h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M14.293 6.293a1 1 0 0 0-1.414 0L10 9.586 7.707 7.293a1 1 0 1 0-1.414 1.414l3 3a1 1 0 0 0 1.414 0l3-3a1 1 0 0 0 0-1.414z"
+              />
+            </svg>
+          </div>
         </div>
+        <div class="flex flex-col">
+          <button id="playAudioButton">
+            <img
+              id="audio_play"
+              class="w-10 h-10 cursor-pointer"
+              src="./assets/play.png"
+              alt="Play"
+            />
+          </button>
+        </div>
+        <div class="flex flex-col">
+          <button id="stopAudioButton">
+            <img
+              id="audio_stop"
+              class="w-10 h-10 cursor-pointer"
+              src="./assets/pause.png"
+              alt="Play"
+            />
+          </button>
+        </div>
+      </div>
     </div>
-    <audio id="bellSound" src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/bell.mp3"></audio>
+    <audio id="bellSound1" src="./assets/bell.mp3"></audio>
+    <audio id="bellSound" src="./assets/bell.mp3"></audio>
+
     <script>
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
-        const timeSelect = document.getElementById('timeSelect');
-        const customTimeEntry = document.getElementById('customTimeEntry');
-        const customTimeInput = document.getElementById('customTimeInput');
-        const customTimeSet = document.getElementById('customTimeSet');
-        const timerDisplay = document.getElementById('timerDisplay');
-        const playButton = document.getElementById('playButton');
-        const pauseButton = document.getElementById('pauseButton');
-        const resetButton = document.getElementById('resetButton');
-        const bellSound = document.getElementById('bellSound');
+      const countdownElement = document.getElementById("countdown");
+      const timerSelect = document.getElementById("timerSelect");
+      const audioSelect = document.getElementById("audioSelect");
+      const playButton = document.getElementById("playButton");
+      const themeToggleButton = document.getElementById("themeToggle");
+      const themeContainer = document.getElementById("themeContainer");
+      const pauseButton = document.getElementById("pauseButton");
+      const resetButton = document.getElementById("resetButton");
+      const img_themeToggle = document.getElementById("img_themeToggle");
+      const img_play = document.getElementById("img_play");
+      const img_pause = document.getElementById("img_pause");
+      const img_reset = document.getElementById("img_reset");
+      const img_audio_play = document.getElementById("audio_play");
+      const img_audio_stop = document.getElementById("audio_stop");
+      const bellSound = document.getElementById("bellSound");
+      const playAudioButton = document.getElementById("playAudioButton");
+      const stopAudioButton = document.getElementById("stopAudioButton");
+      const breakduration = 300;
+      let countdownInterval,
+        currentduration,
+        isbreak = false,
+        prevcustomminutes = "00",
+        customminutes;
+      countdownElement.textContent = "00:00";
 
-        let countdown;
-        let isPaused = false;
-        let initialTime = 0;
+      function startCountdown(duration) {
+        clearInterval(countdownInterval);
+        let remainingTime = duration;
+        updateCountdownDisplay(remainingTime);
+        countdownInterval = setInterval(() => {
+          remainingTime--;
+          currentduration = remainingTime;
+          updateCountdownDisplay(remainingTime);
+          if (remainingTime <= 0 && isbreak === false) {
+            currentduration = breakduration;
+            remainingTime = currentduration;
+            bellSound.play();
+            const break_minutes = Math.floor(breakduration / 60);
+            const break_seconds = breakduration % 60;
+            countdownElement.textContent = `${break_minutes
+              .toString()
+              .padStart(2, "0")}:${break_seconds.toString().padStart(2, "0")}`;
+            isbreak = true;
+          } else if (remainingTime <= 0 && isbreak) {
+            clearInterval(countdownInterval);
+            bellSound.play();
+            countdownElement.textContent = "Time's up!";
+          }
+        }, 1000);
+      }
 
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark');
-            body.classList.toggle('light');
-            themeToggle.src = body.classList.contains('dark') ? 'https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/lmtoggle.png' : 'https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/dmtoggle.png';
-        });
+      function updateCountdownDisplay(timeInSeconds) {
+        const minutes = Math.floor(timeInSeconds / 60);
+        const seconds = timeInSeconds % 60;
+        countdownElement.textContent = `${minutes
+          .toString()
+          .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 
-        timeSelect.addEventListener('change', (e) => {
-            if(e.target.value === 'custom') {
-                customTimeEntry.classList.remove('hidden');
-            } else {
-                customTimeEntry.classList.add('hidden');
-            }
-        });
-
-        customTimeSet.addEventListener('click', () => {
-            startTimer(parseInt(customTimeInput.value) * 60);
-        });
-
-        playButton.addEventListener('click', () => {
-            isPaused = false;
-            let duration = timeSelect.value === 'custom' ? parseInt(customTimeInput.value) * 60 : parseInt(timeSelect.value);
-            startTimer(duration);
-        });
-
-        pauseButton.addEventListener('click', () => {
-            clearInterval(countdown);
-            pauseButton.classList.add('hidden');
-            playButton.classList.remove('hidden');
-            isPaused = true;
-        });
-
-        resetButton.addEventListener('click', () => {
-            clearInterval(countdown);
-            updateTimer(initialTime);
-            playButton.classList.remove('hidden');
-            pauseButton.classList.add('hidden');
-        });
-
-        function startTimer(duration) {
-            if (!isPaused) {
-                initialTime = duration;
-            }
-            clearInterval(countdown);
-            updateTimer(duration);
-            const endTime = Date.now() + duration * 1000;
-
-            countdown = setInterval(() => {
-                const secondsLeft = Math.round((endTime - Date.now()) / 1000);
-                if (secondsLeft < 0) {
-                    clearInterval(countdown);
-                    bellSound.play();
-                    startBreakTimer(initialTime);
-                    return;
-                }
-                updateTimer(secondsLeft);
-            }, 1000);
-
-            playButton.classList.add('hidden');
-            pauseButton.classList.remove('hidden');
+        if (timeInSeconds === "custom") {
+          countdownElement.contentEditable = true;
+          countdownElement.textContent = "";
+          countdownElement.focus();
         }
+      }
 
-        function startBreakTimer(duration) {
-            let breakDuration = Math.round(duration * 0.2);
-            startTimer(breakDuration);
-        }
+      function pauseCountdown() {
+        clearInterval(countdownInterval);
+      }
 
-        function updateTimer(seconds) {
-            const minutes = Math.floor(seconds / 60);
-            const remainingSeconds = seconds % 60;
-            timerDisplay.textContent = `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+      function resetCountdown() {
+        isbreak = false;
+        clearInterval(countdownInterval);
+        if (timerSelect.value === "custom")
+          updateCountdownDisplay(customminutes * 60);
+        else updateCountdownDisplay(parseInt(timerSelect.value));
+        currentduration = timerSelect.value;
+        pauseButton.classList.add("pointer-events-none", "opacity-50");
+        playButton.classList.remove("pointer-events-none", "opacity-50");
+      }
+
+      countdownElement.addEventListener("input", (event) => {
+        customminutes = countdownElement.textContent.split(":")[0];
+        if (Number.isNaN(parseInt(event.data))) {
+          countdownElement.textContent = prevcustomminutes + ":00";
+          return;
         }
+        if (customminutes.length > 3) {
+          countdownElement.textContent = prevcustomminutes + ":00";
+          return;
+        }
+        prevcustomminutes = customminutes;
+      });
+
+      timerSelect.addEventListener("change", () => {
+        updateCountdownDisplay(timerSelect.value);
+        currentduration = timerSelect.value;
+        pauseCountdown();
+        pauseButton.classList.add("pointer-events-none", "opacity-50");
+        playButton.classList.remove("pointer-events-none", "opacity-50");
+      });
+
+      themeToggleButton.addEventListener("click", () => {
+        if (themeContainer.classList.contains("bg-gray-800")) {
+          themeContainer.classList.remove("bg-gray-800");
+          countdown.classList.remove("text-gray-50");
+          img_themeToggle.src = "./assets/lmdm.png";
+          img_play.src = "./assets/play.png";
+          img_pause.src = "./assets/pause.png";
+          img_reset.src = "./assets/reset.png";
+          img_audio_play.src = "./assets/play.png";
+          img_audio_stop.src = "./assets/pause.png";
+        } else {
+          themeContainer.classList.add("bg-gray-800");
+          countdown.classList.add("text-gray-50");
+          img_themeToggle.src = "./assets/lmtoggle.png";
+          img_play.src = "./assets/dark_play.png";
+          img_pause.src = "./assets/dark_pause.png";
+          img_reset.src = "./assets/dark_reset.png";
+          img_audio_play.src = "./assets/dark_play.png";
+          img_audio_stop.src = "./assets/dark_pause.png";
+        }
+      });
+
+      playButton.addEventListener("click", () => {
+        countdownElement.contentEditable = false;
+        const selectedTime = parseInt(
+          currentduration === undefined ? timerSelect.value : currentduration
+        );
+        customminutes = parseInt(countdownElement.textContent.split(":")[0]);
+        if (Number.isNaN(selectedTime)) startCountdown(customminutes * 60);
+        else startCountdown(selectedTime);
+        playButton.classList.add("pointer-events-none", "opacity-50");
+        pauseButton.classList.remove("pointer-events-none", "opacity-50");
+      });
+
+      pauseButton.addEventListener("click", () => {
+        pauseCountdown();
+        playButton.classList.remove("pointer-events-none", "opacity-50");
+        pauseButton.classList.add("pointer-events-none", "opacity-50");
+      });
+
+      resetButton.addEventListener("click", () => {
+        resetCountdown();
+      });
+      audioSelect.addEventListener("change", () => {
+        bellSound1.src = "./assets/" + audioSelect.value + ".mp3";
+        bellSound1.pause();
+        playAudioButton.classList.remove("pointer-events-none", "opacity-50");
+        stopAudioButton.classList.add("pointer-events-none", "opacity-50");
+      });
+      playAudioButton.addEventListener("click", () => {
+        bellSound1.src = "./assets/" + audioSelect.value + ".mp3";
+        bellSound1.play();
+        playAudioButton.classList.add("pointer-events-none", "opacity-50");
+        stopAudioButton.classList.remove("pointer-events-none", "opacity-50");
+      });
+      stopAudioButton.addEventListener("click", () => {
+        bellSound1.pause();
+        playAudioButton.classList.remove("pointer-events-none", "opacity-50");
+        stopAudioButton.classList.add("pointer-events-none", "opacity-50");
+      });
+
+      bellSound1.addEventListener("ended", function () {
+        playAudioButton.classList.remove("pointer-events-none", "opacity-50");
+      });
     </script>
-</body>
+  </body>
 </html>
