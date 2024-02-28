@@ -19,7 +19,7 @@
             <img
               id="img_play"
               class="w-10 h-10 cursor-pointer"
-              src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/play.png"
+              src="./assets/play.png"
               alt="Play"
             />
           </button>
@@ -27,7 +27,7 @@
             <img
               id="img_themeToggle"
               class="w-10 h-10 cursor-pointer"
-              src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/lmdm.png"
+              src="./assets/lmdm.png"
               alt="Toggle Theme"
             />
           </button>
@@ -42,7 +42,7 @@
             <img
               id="img_pause"
               class="w-10 h-10 cursor-pointer"
-              src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/pause.png"
+              src="./assets/pause.png"
               alt="Reset"
             />
           </button>
@@ -50,7 +50,7 @@
             <img
               id="img_reset"
               class="w-10 h-10 cursor-pointer"
-              src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/reset.png"
+              src="./assets/reset.png"
               alt="Reset"
             />
           </button>
@@ -88,14 +88,14 @@
           class="flex relative flex-col md:min-w-0 overflow-auto will-change-scroll flex-grow"
         >
           <select
-            id="timerSelect"
+            id="audioSelect"
             class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
           >
-            <option value="0">Please choose focus sounds</option>
-            <option value="1500">Binaural Beats</option>
-            <option value="3600">White Noise</option>
-            <option value="5400">Brown Noise</option>
-            <option value="custom">Beats</option>
+            <option value="bell">Please choose focus sounds</option>
+            <option value="binauralbeats">Binaural Beats</option>
+            <option value="whitenoise">White Noise</option>
+            <option value="brownnoise">Brown Noise</option>
+            <option value="lofibeats">Beats</option>
           </select>
           <div
             class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
@@ -116,7 +116,7 @@
             <img
               id="audio_play"
               class="w-10 h-10 cursor-pointer"
-              src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/play.png"
+              src="./assets/play.png"
               alt="Play"
             />
           </button>
@@ -126,18 +126,20 @@
             <img
               id="audio_stop"
               class="w-10 h-10 cursor-pointer"
-              src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/pause.png"
+              src="./assets/pause.png"
               alt="Play"
             />
           </button>
         </div>
       </div>
     </div>
-    <audio id="bellSound" src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/bell.mp3"></audio>
+    <audio id="bellSound1" src="./assets/bell.mp3"></audio>
+    <audio id="bellSound" src="./assets/bell.mp3"></audio>
 
     <script>
       const countdownElement = document.getElementById("countdown");
       const timerSelect = document.getElementById("timerSelect");
+      const audioSelect = document.getElementById("audioSelect");
       const playButton = document.getElementById("playButton");
       const themeToggleButton = document.getElementById("themeToggle");
       const themeContainer = document.getElementById("themeContainer");
@@ -240,21 +242,21 @@
         if (themeContainer.classList.contains("bg-gray-800")) {
           themeContainer.classList.remove("bg-gray-800");
           countdown.classList.remove("text-gray-50");
-          img_themeToggle.src = "https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/lmdm.png";
-          img_play.src = "https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/play.png";
-          img_pause.src = "https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/pause.png";
-          img_reset.src = "https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/reset.png";
-          img_audio_play.src = "https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/play.png";
-          img_audio_stop.src = "https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/pause.png";
+          img_themeToggle.src = "./assets/lmdm.png";
+          img_play.src = "./assets/play.png";
+          img_pause.src = "./assets/pause.png";
+          img_reset.src = "./assets/reset.png";
+          img_audio_play.src = "./assets/play.png";
+          img_audio_stop.src = "./assets/pause.png";
         } else {
           themeContainer.classList.add("bg-gray-800");
           countdown.classList.add("text-gray-50");
-          img_themeToggle.src = "https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/lmtoggle.png";
-          img_play.src = "https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/dark_play.png";
-          img_pause.src = "https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/dark_pause.png";
-          img_reset.src = "https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/dark_reset.png";
-          img_audio_play.src = "https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/dark_play.png";
-          img_audio_stop.src = "https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/dark_pause.png";
+          img_themeToggle.src = "./assets/lmtoggle.png";
+          img_play.src = "./assets/dark_play.png";
+          img_pause.src = "./assets/dark_pause.png";
+          img_reset.src = "./assets/dark_reset.png";
+          img_audio_play.src = "./assets/dark_play.png";
+          img_audio_stop.src = "./assets/dark_pause.png";
         }
       });
 
@@ -279,19 +281,36 @@
       resetButton.addEventListener("click", () => {
         resetCountdown();
       });
-
+      audioSelect.addEventListener("change", () => {
+        if (audioSelect.value === "binauralbeats")
+          bellSound1.src =
+            "https://file.notion.so/f/f/c89fc791-a2c5-4425-9263-3082262e9a13/443fd640-c6c9-4f23-a89a-16862a0033cf/Deep_Focus_(60_Minutes)_-_The_Best_Binaural_Beats.mp3?id=a0355569-120c-4ade-b238-bc52ef149336&table=block&spaceId=c89fc791-a2c5-4425-9263-3082262e9a13&expirationTimestamp=1709251200000&signature=zcPkb6KoTonS4WPMds-4Fj9XCZRL96RdqQWkvnBP8zI";
+        else if (audioSelect.value === "brownnoise")
+          bellSound1.src =
+            "https://file.notion.so/f/f/c89fc791-a2c5-4425-9263-3082262e9a13/557ca5b1-3aea-443a-bd54-293cbaddb809/onlymp3.to_-_brown_noise_for_studying_with_alpha_beta_wave_isochronic_tones-1ZxJfdghjs4-192k-1701018882.mp3?id=6413f623-b620-4def-9c6e-5a7800a56b13&table=block&spaceId=c89fc791-a2c5-4425-9263-3082262e9a13&expirationTimestamp=1709251200000&signature=gVv9rjDg0zVuGwQOCHbjkwpQRIx-l8gmpl6GVAqZ86Q";
+        else if (audioSelect.value === "whitenoise")
+          bellSound1.src =
+            "https://file.notion.so/f/f/c89fc791-a2c5-4425-9263-3082262e9a13/a7763c54-5dfd-4894-9aa6-9ede2cffe30b/onlymp3.to_-_ADHD_ADD_Relief_WHITE_NOISE_Natural_Sound_For_Better_Focus_And_Sleep_Proven_by_Science_-NWlFKrzvsm0-192k-1701018887.mp3?id=499eebbd-0316-465f-8807-3ffdabd273a6&table=block&spaceId=c89fc791-a2c5-4425-9263-3082262e9a13&expirationTimestamp=1709251200000&signature=ETJroRfZ9h4mb95w8nYbpO_tRzricnSw7EjTECL_nzs";
+        else
+          bellSound1.src =
+            "https://file.notion.so/f/f/c89fc791-a2c5-4425-9263-3082262e9a13/443fd640-c6c9-4f23-a89a-16862a0033cf/Deep_Focus_(60_Minutes)_-_The_Best_Binaural_Beats.mp3?id=a0355569-120c-4ade-b238-bc52ef149336&table=block&spaceId=c89fc791-a2c5-4425-9263-3082262e9a13&expirationTimestamp=1709251200000&signature=zcPkb6KoTonS4WPMds-4Fj9XCZRL96RdqQWkvnBP8zI";
+        bellSound1.pause();
+        playAudioButton.classList.remove("pointer-events-none", "opacity-50");
+        stopAudioButton.classList.add("pointer-events-none", "opacity-50");
+      });
       playAudioButton.addEventListener("click", () => {
-        bellSound.play();
+        bellSound1.src = "./assets/" + audioSelect.value + ".mp3";
+        bellSound1.play();
         playAudioButton.classList.add("pointer-events-none", "opacity-50");
         stopAudioButton.classList.remove("pointer-events-none", "opacity-50");
       });
       stopAudioButton.addEventListener("click", () => {
-        bellSound.pause();
+        bellSound1.pause();
         playAudioButton.classList.remove("pointer-events-none", "opacity-50");
         stopAudioButton.classList.add("pointer-events-none", "opacity-50");
       });
 
-      bellSound.addEventListener("ended", function () {
+      bellSound1.addEventListener("ended", function () {
         playAudioButton.classList.remove("pointer-events-none", "opacity-50");
       });
     </script>
