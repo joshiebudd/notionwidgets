@@ -9,6 +9,7 @@
   <body
     class="transition duration-150 h-screen flex items-center justify-center"
     id="themeContainer"
+    style="background-color: #ffffff"
   >
     <div class="text-center px-4 overflow-hidden">
       <div
@@ -134,6 +135,12 @@
           </div>
         </div>
       </div>
+      <div class="mt-5 flex justify-center w-full items-center">
+        <div>
+          <img class="w-10 h-10" src="./assets/logo.webp" alt="Avatar" />
+        </div>
+        <div class="ml-2" id="dev">Made by Neuro Notion Â© 2024</div>
+      </div>
     </div>
     <audio
       id="bellSound1"
@@ -147,12 +154,14 @@
     <script>
       const countdownElement = document.getElementById("countdown");
       const timerSelect = document.getElementById("timerSelect");
+      let isDarkMode = false;
       const audioSelect = document.getElementById("audioSelect");
       const playdiv = document.getElementById("playdiv");
       const themeTogglediv = document.getElementById("themeToggle");
       const themeContainer = document.getElementById("themeContainer");
       const pausediv = document.getElementById("pausediv");
       const resetdiv = document.getElementById("resetdiv");
+      const dev = document.getElementById("dev");
       const img_themeToggle = document.getElementById("img_themeToggle");
       const img_play = document.getElementById("img_play");
       const img_pause = document.getElementById("img_pause");
@@ -247,9 +256,11 @@
       });
 
       themeTogglediv.addEventListener("click", () => {
-        if (themeContainer.classList.contains("bg-black")) {
-          themeContainer.classList.remove("bg-black");
+        if (isDarkMode) {
+          isDarkMode = !isDarkMode;
+          themeContainer.style.backgroundColor = "#ffffff";
           countdown.classList.remove("text-gray-50");
+          dev.classList.remove("text-gray-50");
           img_themeToggle.src =
             "https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/lmdm.png";
           img_play.src =
@@ -263,8 +274,10 @@
           img_audio_stop.src =
             "https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/pause.png";
         } else {
-          themeContainer.classList.add("bg-black");
+          isDarkMode = !isDarkMode;
+          themeContainer.style.backgroundColor = "#191919";
           countdown.classList.add("text-gray-50");
+          dev.classList.add("text-gray-50");
           img_themeToggle.src =
             "https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/lmtoggle.png";
           img_play.src =
