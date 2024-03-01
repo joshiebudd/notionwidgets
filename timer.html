@@ -144,17 +144,17 @@
           />
         </div>
         <div class="ml-2 md:text-base text-xs" id="dev">
-          Made by Neuro Notion Â© 2024
+          Made by Neuro Notion © 2024
         </div>
       </div>
     </div>
     <audio
       id="bellSound1"
-      src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/bell.mp3"
+      src="https://drive.google.com/file/d/1iWZJhs1jLLlP5EOD7ZE1hRL1tpj1OxYn/view?usp=sharing"
     ></audio>
     <audio
       id="bellSound"
-      src="https://raw.githubusercontent.com/joshiebudd/neuronotion/main/assets/bell.mp3"
+      src="https://drive.google.com/file/d/1iWZJhs1jLLlP5EOD7ZE1hRL1tpj1OxYn/view?usp=sharing"
     ></audio>
 
     <script>
@@ -321,19 +321,36 @@
         resetCountdown();
       });
       audioSelect.addEventListener("change", () => {
-        bellSound1.src =
-          "https://upright-dolphin-humbly.ngrok-free.app/assets/" +
-          audioSelect.value +
-          ".mp3";
+        if (audioSelect.value === "binauralbeats")
+          bellSound1.src =
+            "https://NeuroNotionPullZonw.b-cdn.net/90min_Binaural_Beats.mp3";
+        else if (audioSelect.value === "whitenoise")
+          bellSound1.src =
+            "https://neuronotionpullzonw.b-cdn.net/onlymp3.to_-_ADHD_ADD_Relief_WHITE_NOISE_Natural_Sound_For_Better_Focus_And_Sleep_Proven_by_Science_-NWlFKrzvsm0-192k-1701018887.mp3";
+        else if (audioSelect.value === "brownnoise")
+          bellSound1.src =
+            "https://NeuroNotionPullZonw.b-cdn.net/onlymp3.to_-_brown_noise_for_studying_with_alpha_beta_wave_isochronic_tones-1ZxJfdghjs4-192k-1701018882.mp3";
+        else if (audioSelect.value === "lofibeats")
+          bellSound1.src =
+            "https://NeuroNotionPullZonw.b-cdn.net/onlymp3.to%20-%20Best%20of%20lofi%20hip%20hop%202023%20beats%20to%20relax%20study%20to-mmKguZohAck-192k-1709122744.mp3";
         bellSound1.pause();
         playAudiodiv.classList.remove("pointer-events-none", "opacity-50");
         stopAudiodiv.classList.add("pointer-events-none", "opacity-50");
       });
       playAudiodiv.addEventListener("click", () => {
-        bellSound1.src =
-          "https://upright-dolphin-humbly.ngrok-free.app/assets/" +
-          audioSelect.value +
-          ".mp3";
+        if (audioSelect.value === "binauralbeats")
+          bellSound1.src =
+            "https://NeuroNotionPullZonw.b-cdn.net/90min_Binaural_Beats.mp3";
+        else if (audioSelect.value === "whitenoise")
+          bellSound1.src =
+            "https://neuronotionpullzonw.b-cdn.net/onlymp3.to_-_ADHD_ADD_Relief_WHITE_NOISE_Natural_Sound_For_Better_Focus_And_Sleep_Proven_by_Science_-NWlFKrzvsm0-192k-1701018887.mp3";
+        else if (audioSelect.value === "brownnoise")
+          bellSound1.src =
+            "https://NeuroNotionPullZonw.b-cdn.net/onlymp3.to_-_brown_noise_for_studying_with_alpha_beta_wave_isochronic_tones-1ZxJfdghjs4-192k-1701018882.mp3";
+        else if (audioSelect.value === "lofibeats")
+          alert("OK"),
+            (bellSound1.src =
+              "https://NeuroNotionPullZonw.b-cdn.net/onlymp3.to%20-%20Best%20of%20lofi%20hip%20hop%202023%20beats%20to%20relax%20study%20to-mmKguZohAck-192k-1709122744.mp3");
         bellSound1.play();
         playAudiodiv.classList.add("pointer-events-none", "opacity-50");
         stopAudiodiv.classList.remove("pointer-events-none", "opacity-50");
