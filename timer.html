@@ -150,11 +150,11 @@
     </div>
     <audio
       id="bellSound1"
-      src="https://drive.google.com/file/d/1iWZJhs1jLLlP5EOD7ZE1hRL1tpj1OxYn/view?usp=sharing"
+      src="https://NeuroNotionPullZonw.b-cdn.net/bell%20(1).mp3"
     ></audio>
     <audio
       id="bellSound"
-      src="https://drive.google.com/file/d/1iWZJhs1jLLlP5EOD7ZE1hRL1tpj1OxYn/view?usp=sharing"
+      src="https://NeuroNotionPullZonw.b-cdn.net/bell%20(1).mp3"
     ></audio>
 
     <script>
@@ -193,16 +193,16 @@
           remainingTime--;
           currentduration = remainingTime;
           updateCountdownDisplay(remainingTime);
-          if (remainingTime <= 0 && isbreak === false) {
-            currentduration = breakduration;
-            remainingTime = currentduration;
-            bellSound.play();
-            const break_minutes = Math.floor(breakduration / 60);
-            const break_seconds = breakduration % 60;
-            countdownElement.textContent = `${break_minutes
-              .toString()
-              .padStart(2, "0")}:${break_seconds.toString().padStart(2, "0")}`;
-            isbreak = true;
+if (remainingTime <= 0 && isbreak === false) {
+  const breakDuration = Math.floor(duration * 0.18); // 18% of the main timer length
+  currentduration = breakDuration;
+  remainingTime = currentduration;
+  bellSound.play();
+  const break_minutes = Math.floor(breakDuration / 60);
+  const break_seconds = breakDuration % 60;
+  countdownElement.textContent = `${break_minutes.toString().padStart(2, "0")}:${break_seconds.toString().padStart(2, "0")}`;
+  isbreak = true;
+}
           } else if (remainingTime <= 0 && isbreak) {
             clearInterval(countdownInterval);
             bellSound.play();
